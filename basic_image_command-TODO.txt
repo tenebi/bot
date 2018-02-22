@@ -1,0 +1,6 @@
+1. get input from user (!weeb)
+2. have an index of weeb themed images (folder, each image is named with an unsigned int starting at 0)
+3. roll a random number between 0 and max image count
+4. output weeb image
+
+post scriptum : this can then later be cannibalised to create !pat, !slap, !suckdick etc commands
