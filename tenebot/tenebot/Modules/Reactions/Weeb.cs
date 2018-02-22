@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace tenebot.Modules.Reactions
                             "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/2.jpg",
                             "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/3.jpg" };
         [Command("weeb")]
-        public async Task weebT([Remainder]string user = null)
+        public async Task weebT(SocketGuildUser user = null)
         {
 
             EmbedBuilder builder = new EmbedBuilder();
