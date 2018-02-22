@@ -1,0 +1,21 @@
+// Heres how to use this file, just add like its shown in examples
+// Preferably open in a text editor, other than notepad cause nicer formatting
+//
+// Todo:
+//    name - description
+//    a feature - something that needs to be done
+//
+// Doing:
+//    who - what
+//    jovan, someone else - a feature
+//
+// Done:
+//    feature name that has been done
+//    a feature
+
+
+Todo:
+
+Doing:
+
+Done:
