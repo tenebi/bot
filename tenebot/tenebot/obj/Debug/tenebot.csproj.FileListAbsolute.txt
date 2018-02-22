@@ -48,6 +48,7 @@ c:\users\cpc\source\repos\tenebot\tenebot\obj\Debug\tenebot.pdb
 c:\users\cpc\source\repos\tenebot\tenebot\bin\Debug\libsodium.dll
 c:\users\cpc\source\repos\tenebot\tenebot\bin\Debug\opus.dll
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\libsodium.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\opus.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\tenebot.exe.config
@@ -98,6 +99,8 @@ C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.csproj.CoreCompileInp
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.exe
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.pdb
 =======
+=======
+>>>>>>> Stashed changes
 D:\Gits\tenebot\tenebot\tenebot\bin\Debug\libsodium.dll
 D:\Gits\tenebot\tenebot\tenebot\bin\Debug\opus.dll
 D:\Gits\tenebot\tenebot\tenebot\bin\Debug\tenebot.exe.config
@@ -147,4 +150,7 @@ D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csprojResolveAssemblyReference
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csproj.CoreCompileInputs.cache
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.exe
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.pdb
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
