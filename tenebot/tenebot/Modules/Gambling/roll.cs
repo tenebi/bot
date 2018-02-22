@@ -22,7 +22,7 @@ namespace tenebot.Modules.Gambling
 
                 int randint = rand.Next(9);
                 num[i] = Convert.ToChar(randint);
-                //numbers += randint.ToString();
+                numbers += randint.ToString();
             }
 
             Array.Reverse(num);
@@ -51,20 +51,25 @@ namespace tenebot.Modules.Gambling
 
             switch (count)
             {
-                case 0 :
-                    builder.Title = "singles :(";
-                    break;
                 case 1 :
-                    builder.Title = "D U B S!";
+                    builder.Title = "singles :(";
+                    builder.ImageUrl = "https://media1.tenor.com/images/785a0f1ad80eb672d1cc792e74d4071b/tenor.gif?itemid=5036238";
                     break;
                 case 2 :
-                    builder.Title = "*T R I P S!*";
+                    builder.Title = "D U B S!";
+                    builder.ImageUrl = "http://i0.kym-cdn.com/photos/images/newsfeed/000/197/503/1320813769830.gif";
                     break;
                 case 3 :
-                    builder.Title = "**Q U A D S!**";
+                    builder.Title = "*T R I P S!*";
+                    builder.ImageUrl = "http://i0.kym-cdn.com/photos/images/newsfeed/000/527/730/440.gif";
                     break;
                 case 4 :
+                    builder.Title = "**Q U A D S!**";
+                    builder.ImageUrl = "http://i0.kym-cdn.com/photos/images/newsfeed/000/597/416/9e7.gif";
+                    break;
+                case 5 :
                     builder.Title = "***Q  U  I  N  T  S!***";
+                    builder.ImageUrl = "http://i0.kym-cdn.com/photos/images/newsfeed/000/731/269/89a.gif";
                     break;
             }
 
