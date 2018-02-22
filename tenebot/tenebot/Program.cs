@@ -39,7 +39,7 @@ namespace tenebot
             _client.Log += Log;
             _commands.Log += Log;
 
-
+            
             await RegisterCommandAsync();
             await _client.LoginAsync(TokenType.Bot, botToken);
             await _client.StartAsync();

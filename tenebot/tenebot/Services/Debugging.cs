@@ -25,6 +25,7 @@ namespace tenebot.Services
                     break;
             }
 
+
             Console.WriteLine($"{DateTime.Now,-19} [{message.Severity,8}] {message.Source}: {message.Message}; {message.Exception}");
             Console.ResetColor();
         }

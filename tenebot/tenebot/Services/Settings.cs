@@ -55,7 +55,6 @@ namespace tenebot.Services
             catch (Exception e)
             {
                 Debugging.Log(new LogMessage(LogSeverity.Error, "Settings, Load()", $"Exception while trying to load settings from configuration", e));
-
                 return false;
             }
         }
