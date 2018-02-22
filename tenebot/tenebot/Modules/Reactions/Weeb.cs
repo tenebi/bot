@@ -12,8 +12,8 @@ namespace tenebot.Modules.Reactions
     {
         Random rand = new Random();
         string[] links = {  "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/1.jpg",
-                            "https://www.jovanzlatanovic.com:2083/cpsess3686105827/frontend/paper_lantern/filemanager/showfile.html?file=2.jpg&fileop=&dir=%2Fhome%2Fjovanzl%2Fpublic_html%2Ftenebi%2Ftoms_bullshit&dirop=&charset=&file_charset=&baseurl=&basedir=",
-                            "https://www.jovanzlatanovic.com:2083/cpsess3686105827/frontend/paper_lantern/filemanager/showfile.html?file=3.jpg&fileop=&dir=%2Fhome%2Fjovanzl%2Fpublic_html%2Ftenebi%2Ftoms_bullshit&dirop=&charset=&file_charset=&baseurl=&basedir=" };
+                            "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/2.jpg",
+                            "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/3.jpg" };
         [Command("weeb")]
         public async Task weebT([Remainder]string user = null)
         {
