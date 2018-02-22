@@ -135,6 +135,7 @@
     <Compile Include="Modules\Gambling\Flip.cs" />
     <Compile Include="Modules\Gambling\roll.cs" />
     <Compile Include="Modules\Reactions\Hmm.cs" />
+    <Compile Include="Modules\Reactions\Weeb.cs" />
     <Compile Include="Modules\Utility\time.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

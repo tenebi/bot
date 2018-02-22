@@ -22,7 +22,7 @@ namespace tenebot.Modules.Gambling
 
                 int randint = rand.Next(9);
                 num[i] = Convert.ToChar(randint);
-                //numbers += randint.ToString();
+                numbers += randint.ToString();
             }
 
             Array.Reverse(num);
@@ -51,19 +51,19 @@ namespace tenebot.Modules.Gambling
 
             switch (count)
             {
-                case 0 :
+                case 1 :
                     builder.Title = "singles :(";
                     break;
-                case 1 :
+                case 2 :
                     builder.Title = "D U B S!";
                     break;
-                case 2 :
+                case 3 :
                     builder.Title = "*T R I P S!*";
                     break;
-                case 3 :
+                case 4 :
                     builder.Title = "**Q U A D S!**";
                     break;
-                case 4 :
+                case 5 :
                     builder.Title = "***Q  U  I  N  T  S!***";
                     break;
             }
