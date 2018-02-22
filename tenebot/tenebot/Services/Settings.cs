@@ -15,8 +15,6 @@ namespace tenebot.Services
         public IList<string> OwnerIds { get; set; }
     }
 
-    // IM STILL WORKING ON THIS DO NOT TOUCH
-
     public static class Settings
     {
         private static string clientId;

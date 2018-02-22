@@ -5,28 +5,70 @@ namespace tenebot.Services
 {
     public static class Debugging
     {
-        public static void Log(LogMessage message)
+        private static ConsoleColor GetColor(LogSeverity severity)
         {
-            switch (message.Severity)
+            switch (severity)
             {
                 case LogSeverity.Critical:
+                    return ConsoleColor.Magenta;
                 case LogSeverity.Error:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
+                    return ConsoleColor.Red;
                 case LogSeverity.Warning:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    break;
+                    return ConsoleColor.Yellow;
                 case LogSeverity.Info:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    break;
+                    return ConsoleColor.White;
                 case LogSeverity.Verbose:
+                    return ConsoleColor.DarkYellow;
                 case LogSeverity.Debug:
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    break;
+                    return ConsoleColor.DarkGray;
+                default:
+                    return ConsoleColor.White;
             }
+        }
 
-            Console.WriteLine($"{DateTime.Now,-19} [{message.Severity,8}] {message.Source}: {message.Message}; {message.Exception}");
+        private static void PrintMessage(LogMessage message)
+        {
+            Console.ForegroundColor = GetColor(message.Severity);
+            Console.Write($"{DateTime.Now,-19} [{message.Severity,8}]");
             Console.ResetColor();
+            Console.Write($" {message.Source}: {message.Message}; {message.Exception}\n");
+        }
+
+        private static void ResetColor()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        public static void Log(LogMessage message)
+        {
+            PrintMessage(message);
+        }
+
+        public static void TestLog()
+        {
+            LogMessage message = new LogMessage(LogSeverity.Critical, "Log testing", $"A random message");
+            Log(message);
+
+            message = new LogMessage(LogSeverity.Debug, "Log testing", $"A random message");
+            Log(message);
+
+            message = new LogMessage(LogSeverity.Error, "Log testing", $"A random message");
+            Log(message);
+
+            message = new LogMessage(LogSeverity.Info, "Log testing", $"A random message");
+            Log(message);
+
+            message = new LogMessage(LogSeverity.Verbose, "Log testing", $"A random message");
+            Log(message);
+
+            message = new LogMessage(LogSeverity.Warning, "Log testing", $"A random message");
+            Log(message);
+        }
+
+        public static void DivideByZero()
+        {
+            int zero = 0;
+            int x = 1 / zero;
         }
     }
 }
