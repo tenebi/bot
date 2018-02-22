@@ -17,7 +17,6 @@ namespace tenebot.Modules.Reactions
         public async Task hmmm([Remainder]SocketGuildUser user = null)
            
         {
-
             EmbedBuilder builder = new EmbedBuilder();
             builder.WithTitle(":thinking: hmmm :thinking:")
                 .WithDescription($"{Context.User.Mention} is suspecting something...")

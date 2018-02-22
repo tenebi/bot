@@ -47,6 +47,8 @@ c:\users\cpc\source\repos\tenebot\tenebot\obj\Debug\tenebot.exe
 c:\users\cpc\source\repos\tenebot\tenebot\obj\Debug\tenebot.pdb
 c:\users\cpc\source\repos\tenebot\tenebot\bin\Debug\libsodium.dll
 c:\users\cpc\source\repos\tenebot\tenebot\bin\Debug\opus.dll
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\libsodium.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\opus.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\tenebot.exe.config
@@ -96,3 +98,59 @@ C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.csprojResolveAssembly
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.csproj.CoreCompileInputs.cache
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.exe
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.pdb
+=======
+=======
+>>>>>>> Stashed changes
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\libsodium.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\opus.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\tenebot.exe.config
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\tenebot.exe
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\tenebot.pdb
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Commands.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Core.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Rest.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Rpc.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Webhook.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.WebSocket.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Microsoft.Win32.Primitives.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Newtonsoft.Json.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.AppContext.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Collections.Immutable.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Console.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Globalization.Calendars.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Interactive.Async.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.IO.Compression.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.IO.Compression.ZipFile.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.IO.FileSystem.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.IO.FileSystem.Primitives.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Net.Http.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Net.Sockets.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Security.Cryptography.Algorithms.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Security.Cryptography.Encoding.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Security.Cryptography.Primitives.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Xml.ReaderWriter.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Commands.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Core.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Rest.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Rpc.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.Webhook.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Discord.Net.WebSocket.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\Newtonsoft.Json.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Collections.Immutable.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Interactive.Async.xml
+D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csprojResolveAssemblyReference.cache
+D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csproj.CoreCompileInputs.cache
+D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.exe
+D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.pdb
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
