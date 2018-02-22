@@ -17,8 +17,14 @@ namespace tenebot.Modules.Reactions
                             "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/2.jpg",
                             "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/3.jpg" };
         [Command("weeb")]
+<<<<<<< Updated upstream
         public async Task weebT(string user)
         {
+=======
+        public async Task weebT(string user = null)
+        {
+            var guild = Context.Guild;
+>>>>>>> Stashed changes
             EmbedBuilder builder = new EmbedBuilder();
             if (user.Contains("@") == false)
             {
@@ -28,7 +34,11 @@ namespace tenebot.Modules.Reactions
                     .WithColor(Color.Orange);
             }
 
+<<<<<<< Updated upstream
             else if (user == null)
+=======
+            if (user[0] != '@')
+>>>>>>> Stashed changes
             {
                 await ReplyAsync("", false, builder.Build());
 
