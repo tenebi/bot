@@ -46,3 +46,5 @@ D:\Gits\tenebot\tenebot\tenebot\bin\Debug\System.Interactive.Async.xml
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csproj.CoreCompileInputs.cache
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.exe
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.pdb
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\configuration.json
+D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csprojResolveAssemblyReference.cache

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Discord;
+using System.IO;
 
 namespace tenebot.Services
 {
@@ -40,9 +38,11 @@ namespace tenebot.Services
         /// <returns>Returns bool if it loaded or failed to load</returns>
         public static bool Load()
         {
+            Debugging.Log(new LogMessage(LogSeverity.Info, "Settings", $"Loading configuration.json"));
+
             try
             {
-                SettingsMiddleMan middleMan = JsonConvert.DeserializeObject<SettingsMiddleMan>("locationoffile");
+                SettingsMiddleMan middleMan = JsonConvert.DeserializeObject<SettingsMiddleMan>(ReadFile());
 
                 clientId = middleMan.ClientId;
                 botToken = middleMan.BotToken;
@@ -52,10 +52,14 @@ namespace tenebot.Services
             }
             catch (Exception e)
             {
-                Debugging.Log(new LogMessage(LogSeverity.Error, "Settings, Load()", $"Exception while trying to load settings from configuration", e));
-
+                Debugging.Log(new LogMessage(LogSeverity.Error, "Settings", $"Exception while trying to load settings from configuration", e));
                 return false;
             }
+        }
+
+        private static string ReadFile()
+        {
+            return File.ReadAllText("configuration.json");
         }
     }
 }

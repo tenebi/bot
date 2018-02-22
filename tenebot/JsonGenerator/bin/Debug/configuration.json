@@ -1,0 +1,8 @@
+{
+  "ClientId": "client_id_here",
+  "BotToken": "bot_token_here",
+  "OwnerIds": [
+    "owner_id",
+    "or_multiple"
+  ]
+}

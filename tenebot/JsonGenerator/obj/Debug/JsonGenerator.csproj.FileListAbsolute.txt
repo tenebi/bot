@@ -1,0 +1,8 @@
+D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe.config
+D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe
+D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.pdb
+D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\Newtonsoft.Json.dll
+D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csprojResolveAssemblyReference.cache
+D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csproj.CoreCompileInputs.cache
+D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.exe
+D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.pdb

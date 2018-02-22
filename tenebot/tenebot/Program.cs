@@ -22,7 +22,6 @@ namespace tenebot
         private IServiceProvider _services;
         private Random rand = new Random();
 
-
         public async Task RunBotAsync()
         {
             _client = new DiscordSocketClient();
@@ -33,21 +32,17 @@ namespace tenebot
                 .AddSingleton(_commands)
                 .BuildServiceProvider();
 
-            string botToken = "NDE1OTQxODc2NjgwNDkxMDE5.DXCd-g.EEXbGoRa41HE5vtkq2jHLoT0Yp4";
+            Settings.Load();
 
             //subs
             _client.Log += Log;
             _commands.Log += Log;
 
-
             await RegisterCommandAsync();
-            await _client.LoginAsync(TokenType.Bot, botToken);
+            await _client.LoginAsync(TokenType.Bot, Settings.BotToken);
             await _client.StartAsync();
             await Task.Delay(-1);
-
-
         }
-
 
         private Task Log(LogMessage message)
         {
