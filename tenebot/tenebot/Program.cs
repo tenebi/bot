@@ -32,7 +32,7 @@ namespace tenebot
                 .AddSingleton(_commands)
                 .BuildServiceProvider();
 
-            string botToken = "NDE1OTQxODc2NjgwNDkxMDE5.DW9Pmw.mAs29OTHzpbluyYYUJ5kY4nBeJE";
+            string botToken = "NDE1OTQxODc2NjgwNDkxMDE5.DXCd-g.EEXbGoRa41HE5vtkq2jHLoT0Yp4";
 
             //subs
             _client.Log += Log;
