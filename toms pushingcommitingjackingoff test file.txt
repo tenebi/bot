@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 pomf pomf~
 kimochi~
 whats this sticky stuff on me~
 
 they play with me until
+=======
+pomf pomf~
+kimochi~
+whats this sticky stuff on me~
+
+they play with me until
+>>>>>>> develop
 i smell like salty coins and milk~
