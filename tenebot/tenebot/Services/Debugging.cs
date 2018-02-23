@@ -1,10 +1,14 @@
 ﻿using System;
 using Discord;
+using System.IO;
 
 namespace tenebot.Services
 {
     public static class Debugging
     {
+        private static string path = Path.Combine(Directory.GetCurrentDirectory(), "logs");
+        private static string fullPath = null;
+
         private static ConsoleColor GetColor(LogSeverity severity)
         {
             switch (severity)
@@ -26,6 +30,11 @@ namespace tenebot.Services
             }
         }
 
+        private static void ResetColor()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
         private static void PrintMessage(LogMessage message)
         {
             Console.ForegroundColor = GetColor(message.Severity);
@@ -34,37 +43,99 @@ namespace tenebot.Services
             Console.Write($" {message.Source}: {message.Message}; {message.Exception}\n");
         }
 
-        private static void ResetColor()
+        private static void SetLogPath()
         {
-            Console.ForegroundColor = ConsoleColor.Gray;
+            string newPath = Path.Combine(path, DateTime.Now.ToString() + ".tenelog").Replace(":", ".");
+            newPath = (newPath.Substring(0, 3)).Replace(".", ":") + newPath.Substring(3, newPath.Length - 3);
+
+            try
+            {
+                if (!Directory.Exists(path))
+                {
+                    LogNoLog("Debugging.Log", $"No log directory found, creating at '{path}'", LogSeverity.Debug);
+                    Directory.CreateDirectory(path);
+                }
+
+                fullPath = newPath;
+                File.Create(fullPath).Dispose();
+                LogNoLog("Debugging.Log", $"Created new log file for session at '{fullPath}'", LogSeverity.Debug);
+            }
+            catch (Exception e)
+            {
+                LogNoLog(new LogMessage(LogSeverity.Error, "SetLogPath", "Failed to create directory", e));
+            }
+        }
+
+        private static void LogMessage(LogMessage message)
+        {
+            PrintMessage(message);
+            LogToFile(message);
+        }
+
+        private static void LogToFile(LogMessage message)
+        {
+            if (fullPath == null)
+                SetLogPath();
+            else
+                File.AppendAllText(fullPath, message.ToString() + "\n");
         }
 
         /// <summary>
-        /// Prints a message on the debug console.
+        /// Prints a message on the debug console and writes to output log.
         /// </summary>
         /// <param name="message">Log message for the message.</param>
         public static void Log(LogMessage message)
         {
-            PrintMessage(message);
+            LogMessage(message);
         }
 
         /// <summary>
-        /// Prints a message on the debug console
+        /// Prints a message on the debug console and writes to output log.
         /// </summary>
         /// <param name="source">Source where the message is coming from (parent class of function or similar).</param>
         /// <param name="message">Message to print to console.</param>
         public static void Log(string source, string message)
         {
-            PrintMessage(new LogMessage(LogSeverity.Info, source, message));
+            LogMessage(new LogMessage(LogSeverity.Info, source, message));
         }
 
         /// <summary>
-        /// Prints a message on the debug console
+        /// Prints a message on the debug console and writes to output log.
         /// </summary>
         /// <param name="source">Source where the message is coming from (parent class of function or similar).</param>
         /// <param name="message">Message to print to console.</param>
         /// <param name="severity">Message severity</param>
         public static void Log(string source, string message, LogSeverity severity = LogSeverity.Info)
+        {
+            LogMessage(new LogMessage(severity, source, message));
+        }
+
+        /// <summary>
+        /// Prints a message on the debug console without writing it to output log.
+        /// </summary>
+        /// <param name="message">Log message for the message.</param>
+        public static void LogNoLog(LogMessage message)
+        {
+            PrintMessage(message);
+        }
+
+        /// <summary>
+        /// Prints a message on the debug console and writes to output log.
+        /// </summary>
+        /// <param name="source">Source where the message is coming from (parent class of function or similar).</param>
+        /// <param name="message">Message to print to console.</param>
+        public static void LogNoLog(string source, string message)
+        {
+            PrintMessage(new LogMessage(LogSeverity.Info, source, message));
+        }
+
+        /// <summary>
+        /// Prints a message on the debug console and writes to output log.
+        /// </summary>
+        /// <param name="source">Source where the message is coming from (parent class of function or similar).</param>
+        /// <param name="message">Message to print to console.</param>
+        /// <param name="severity">Message severity</param>
+        public static void LogNoLog(string source, string message, LogSeverity severity = LogSeverity.Info)
         {
             PrintMessage(new LogMessage(severity, source, message));
         }
