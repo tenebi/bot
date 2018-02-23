@@ -31,7 +31,7 @@ namespace tenebot.Modules.Utility
 
             else if (add > 0)
             {
-                nowtime.AddHours(add);
+                nowtime = nowtime.AddHours(add);
 
                 EmbedBuilder embed = new EmbedBuilder();
                 embed.WithTitle($"{Context.User.Username}, the current time in UTC+"+ add.ToString() +" is :");
@@ -41,10 +41,43 @@ namespace tenebot.Modules.Utility
 
             else if (add < 0)
             {
-                nowtime.AddHours(add);
+                nowtime = nowtime.AddHours(add);
 
                 EmbedBuilder embed = new EmbedBuilder();
                 embed.WithTitle($"{Context.User.Username}, the current time in UTC" + add.ToString() + " is :");
+                embed.Description = nowtime.ToShortTimeString();
+                await ReplyAsync("", false, embed.Build());
+            }
+        }
+
+        [Command("GMT")]
+        public async Task outputTimeGmt(double add = 0)
+        {
+            DateTime nowtime = DateTime.UtcNow;
+            if ((add == 0))
+            {
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT is :");
+                embed.Description = nowtime.ToShortTimeString();
+                await ReplyAsync("", false, embed.Build());
+            }
+
+            else if (add > 0)
+            {
+                nowtime = nowtime.AddHours(add);
+
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT+" + add.ToString() + " is :");
+                embed.Description = nowtime.ToShortTimeString();
+                await ReplyAsync("", false, embed.Build());
+            }
+
+            else if (add < 0)
+            {
+                nowtime = nowtime.AddHours(add);
+
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT" + add.ToString() + " is :");
                 embed.Description = nowtime.ToShortTimeString();
                 await ReplyAsync("", false, embed.Build());
             }
