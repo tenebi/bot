@@ -12,14 +12,10 @@ namespace tenebot.Modules.Utility
     
     public class Times : ModuleBase<SocketCommandContext>
     {
-
-        
-
         [Command("daily")]
         public async Task inputs(string time, [Remainder] string message)
         {
             
-
         }
     }
 }

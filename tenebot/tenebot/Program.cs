@@ -3,10 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using tenebot.Services;
 
@@ -15,7 +12,6 @@ namespace tenebot
     class Program
     {
         static void Main(string[] args) => new Program().RunBotAsync().GetAwaiter().GetResult();
-
 
         private DiscordSocketClient _client;
         private CommandService _commands;
@@ -67,13 +63,14 @@ namespace tenebot
             if (message.HasStringPrefix("!", ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 var context = new SocketCommandContext(_client, message);
+                Debugging.Log("Command Handler", $"{context.User.Username} called {message}");
 
                 var result = await _commands.ExecuteAsync(context, argPos, _services);
                 if (!result.IsSuccess && result.Error != CommandError.ObjectNotFound || result.Error != CommandError.Exception)
                 {
+                    Debugging.Log("Command Handler", $"Error with command {message}: {result.ErrorReason.Replace(".", "")}", LogSeverity.Warning);
                     await arg.Channel.SendMessageAsync(result.ErrorReason);
                 }
-
             }
         }
     }
