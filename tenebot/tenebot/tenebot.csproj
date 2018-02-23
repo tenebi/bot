@@ -132,8 +132,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Administration\Administration.cs" />
     <Compile Include="Modules\Gambling\Choose.cs" />
+=======
+    <Compile Include="Modules\AdministrationCommands\UserStats.cs" />
+    <Compile Include="Services\AdministrationServices\CheckIsOwner.cs" />
+>>>>>>> develop
     <Compile Include="Modules\Gambling\Flip.cs" />
     <Compile Include="Modules\Gambling\roll.cs" />
     <Compile Include="Modules\Reactions\Hmm.cs" />

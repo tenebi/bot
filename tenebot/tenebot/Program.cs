@@ -69,7 +69,11 @@ namespace tenebot
                 if (!result.IsSuccess && result.Error != CommandError.ObjectNotFound || result.Error != CommandError.Exception)
                 {
                     Debugging.Log("Command Handler", $"Error with command {message}: {result.ErrorReason.Replace(".", "")}", LogSeverity.Warning);
-                    await arg.Channel.SendMessageAsync(result.ErrorReason);
+                    EmbedBuilder embed = new EmbedBuilder();
+                    embed.WithTitle(":no_entry_sign:  Error!")
+                        .WithColor(Color.DarkRed)
+                        .WithDescription(result.ErrorReason);
+                    await arg.Channel.SendMessageAsync("", false, embed.Build());
                 }
             }
         }

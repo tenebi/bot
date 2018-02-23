@@ -1,0 +1,8 @@
+17:25:08 Settings    Loaded configuration.json successfully
+17:25:08 Discord     Discord.Net v1.0.2 (API v6)
+17:25:09 Gateway     Connecting
+17:25:10 Gateway     Connected
+17:25:10 Gateway     Ready
+17:25:17 Command Han tenebi called !getstats
+17:25:44 Command Han tomacatx1 called !getstats
+17:25:44 ADMINISTRAT Administrator command called by user with insufficient permissions: tomacatx1 . If this command call was by you or an administrator, place your client's ID in configuration.json.

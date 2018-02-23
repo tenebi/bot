@@ -8,7 +8,7 @@ namespace tenebot.Modules.Utility
     [Group("time")]
     public class WhatTime :  ModuleBase<SocketCommandContext>
     {
-        [Command("")]
+        [Command]
         public async Task outputTimeHelp()
         {
             EmbedBuilder embed = new EmbedBuilder();
@@ -18,33 +18,66 @@ namespace tenebot.Modules.Utility
         }
 
         [Command("UTC")]
-        public async Task outputTimeUtc(int add)
+        public async Task outputTimeUtc(double add = 0)
         {
             DateTime nowtime = DateTime.UtcNow;
             if ((add == 0))
             {
                 EmbedBuilder embed = new EmbedBuilder();
-                embed.WithTitle($"{Context.User.Username}, the current time in UTC is : (no int or int is 0)");
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC is :");
                 embed.Description = nowtime.ToShortTimeString();
                 await ReplyAsync("", false, embed.Build());
             }
 
             else if (add > 0)
             {
-                nowtime.AddHours(add);
+                nowtime = nowtime.AddHours(add);
 
                 EmbedBuilder embed = new EmbedBuilder();
-                embed.WithTitle($"{Context.User.Username}, the current time in UTC+"+ add.ToString() +" is : (positive int)");
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC+"+ add.ToString() +" is :");
                 embed.Description = nowtime.ToShortTimeString();
                 await ReplyAsync("", false, embed.Build());
             }
 
             else if (add < 0)
             {
-                nowtime.AddHours(add);
+                nowtime = nowtime.AddHours(add);
 
                 EmbedBuilder embed = new EmbedBuilder();
-                embed.WithTitle($"{Context.User.Username}, the current time in UTC" + add.ToString() + " is : (negative int)");
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC" + add.ToString() + " is :");
+                embed.Description = nowtime.ToShortTimeString();
+                await ReplyAsync("", false, embed.Build());
+            }
+        }
+
+        [Command("GMT")]
+        public async Task outputTimeGmt(double add = 0)
+        {
+            DateTime nowtime = DateTime.UtcNow;
+            if ((add == 0))
+            {
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT is :");
+                embed.Description = nowtime.ToShortTimeString();
+                await ReplyAsync("", false, embed.Build());
+            }
+
+            else if (add > 0)
+            {
+                nowtime = nowtime.AddHours(add);
+
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT+" + add.ToString() + " is :");
+                embed.Description = nowtime.ToShortTimeString();
+                await ReplyAsync("", false, embed.Build());
+            }
+
+            else if (add < 0)
+            {
+                nowtime = nowtime.AddHours(add);
+
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT" + add.ToString() + " is :");
                 embed.Description = nowtime.ToShortTimeString();
                 await ReplyAsync("", false, embed.Build());
             }
@@ -53,11 +86,11 @@ namespace tenebot.Modules.Utility
         [Command("local")]
         public async Task outputTimeGmt()
         {
-            DateTime nowtime = DateTime.Now;
+            DateTime localtime = DateTime.Now;
 
             EmbedBuilder embed = new EmbedBuilder();
-            embed.WithTitle($"{Context.User.Username}, the current local time is is : ");
-            embed.Description = nowtime.ToShortTimeString();
+            embed.WithTitle($"{Context.User.Username}, the current local time is : ");
+            embed.Description = localtime.ToShortTimeString();
             await ReplyAsync("", false, embed.Build());
         }
     }
