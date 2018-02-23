@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Discord;
 using System.IO;
+using Discord.Commands;
+using Discord.WebSocket;
 
 namespace tenebot.Services
 {
+
     public class SettingsMiddleMan
     {
         public string ClientId { get; set; }
@@ -15,6 +18,11 @@ namespace tenebot.Services
 
     public static class Settings
     {
+        public static DiscordSocketClient _client;
+        public static CommandService _commands;
+        public static IServiceProvider _services;
+
+
         private static string clientId;
         private static string botToken;
         private static IList<string> ownerIds;

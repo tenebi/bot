@@ -13,30 +13,28 @@ namespace tenebot
     {
         static void Main(string[] args) => new Program().RunBotAsync().GetAwaiter().GetResult();
 
-        private DiscordSocketClient _client;
-        private CommandService _commands;
-        private IServiceProvider _services;
+        
         private Random rand = new Random();
 
         public async Task RunBotAsync()
         {
-            _client = new DiscordSocketClient();
-            _commands = new CommandService();
+            Settings._client = new DiscordSocketClient();
+            Settings._commands = new CommandService();
 
-            _services = new ServiceCollection()
-                .AddSingleton(_client)
-                .AddSingleton(_commands)
+            Settings._services = new ServiceCollection()
+                .AddSingleton(Settings._client)
+                .AddSingleton(Settings._commands)
                 .BuildServiceProvider();
 
             Settings.Load();
 
             //subs
-            _client.Log += Log;
-            _commands.Log += Log;
+            Settings._client.Log += Log;
+            Settings._commands.Log += Log;
 
             await RegisterCommandAsync();
-            await _client.LoginAsync(TokenType.Bot, Settings.BotToken);
-            await _client.StartAsync();
+            await Settings._client.LoginAsync(TokenType.Bot, Settings.BotToken);
+            await Settings._client.StartAsync();
             await Task.Delay(-1);
         }
 
@@ -48,9 +46,9 @@ namespace tenebot
 
         public async Task RegisterCommandAsync()
         {
-            _client.MessageReceived += HandleCommandAsync;
+            Settings._client.MessageReceived += HandleCommandAsync;
 
-            await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
+            await Settings._commands.AddModulesAsync(Assembly.GetEntryAssembly());
         }
 
         private async Task HandleCommandAsync(SocketMessage arg)
@@ -60,12 +58,12 @@ namespace tenebot
 
             int argPos = 0;
 
-            if (message.HasStringPrefix("!", ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
+            if (message.HasStringPrefix("!", ref argPos) || message.HasMentionPrefix(Settings._client.CurrentUser, ref argPos))
             {
-                var context = new SocketCommandContext(_client, message);
+                var context = new SocketCommandContext(Settings._client, message);
                 Debugging.Log("Command Handler", $"{context.User.Username} called {message}");
 
-                var result = await _commands.ExecuteAsync(context, argPos, _services);
+                var result = await Settings._commands.ExecuteAsync(context, argPos, Settings._services);
                 if (!result.IsSuccess && result.Error != CommandError.ObjectNotFound || result.Error != CommandError.Exception)
                 {
                     Debugging.Log("Command Handler", $"Error with command {message}: {result.ErrorReason.Replace(".", "")}", LogSeverity.Warning);

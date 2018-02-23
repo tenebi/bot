@@ -1,0 +1,19 @@
+17:45:34 Settings    Loaded configuration.json successfully
+17:45:34 Discord     Discord.Net v1.0.2 (API v6)
+17:45:35 Gateway     Connecting
+17:45:36 Gateway     Connected
+17:45:37 Gateway     Ready
+17:45:42 Command Han tenebi called !time
+17:45:42 Command Han tomacatx1 called !time utc 2
+17:45:46 Command Han tomacatx1 called !time utc
+17:45:51 Command Han tomacatx1 called !time gmt
+17:45:55 Command Han tomacatx1 called !time gmt 2
+17:46:33 Command Han ititan called !gmt 5
+17:46:33 Command Han Error with command !gmt 5: Unknown command
+17:46:52 Command Han ititan called !time gmt 5
+17:47:14 Command Han ititan called !time gmt -5
+17:58:14 Command Han tomacatx1 called !time gmt
+17:58:20 Command Han tomacatx1 called !time gmt +1
+17:58:26 Command Han tomacatx1 called !time gmt +5
+17:58:31 Command Han tomacatx1 called !time gmt =5
+17:58:31 Command Han Error with command !time gmt =5: The input text has too many parameters
