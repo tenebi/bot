@@ -8,6 +8,15 @@ namespace tenebot.Modules.Utility
     [Group("time")]
     public class WhatTime :  ModuleBase<SocketCommandContext>
     {
+        [Command("")]
+        public async Task outputTimeHelp()
+        {
+            EmbedBuilder embed = new EmbedBuilder();
+            embed.WithTitle($"{Context.User.Username}, !time usage:");
+            embed.Description = "!time timezone +-n\n\nExamples:\n!time utc\n!time utc +2";
+            await ReplyAsync("", false, embed.Build());
+        }
+
         [Command("UTC")]
         public async Task outputTimeUtc(int add)
         {
