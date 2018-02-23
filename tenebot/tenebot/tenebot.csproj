@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administration\Administration.cs" />
+    <Compile Include="Modules\Gambling\Choose.cs" />
     <Compile Include="Modules\Gambling\Flip.cs" />
     <Compile Include="Modules\Gambling\roll.cs" />
     <Compile Include="Modules\Reactions\Hmm.cs" />
