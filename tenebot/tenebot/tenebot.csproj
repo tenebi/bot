@@ -132,6 +132,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administration\Administration.cs" />
     <Compile Include="Modules\Gambling\Flip.cs" />
     <Compile Include="Modules\Gambling\roll.cs" />
     <Compile Include="Modules\Reactions\Hmm.cs" />
@@ -158,6 +159,12 @@
     <Content Include="opus.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JsonGenerator\JsonGenerator.csproj">
+      <Project>{683d6bb0-c0d5-415e-a708-33d80b8f98da}</Project>
+      <Name>JsonGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

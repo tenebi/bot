@@ -5,16 +5,16 @@ using Newtonsoft.Json;
 
 namespace JsonGenerator
 {
-    class Settings
+    public static class JsonGenerator
     {
-        public string ClientId { get; set; }
-        public string BotToken { get; set; }
-        public IList<string> OwnerIds { get; set; }
-    }
-
-    class Program
-    {
-        static string GenerateJson(string clientId, string botToken, List<string> ownerIds)
+        /// <summary>
+        /// Generates a json file, meant for tenebots configuration.
+        /// </summary>
+        /// <param name="clientId">Client id</param>
+        /// <param name="botToken">Bot token</param>
+        /// <param name="ownerIds">One or multiple owner ids</param>
+        /// <returns>The generated json string</returns>
+        public static string GenerateJson(string clientId, string botToken, List<string> ownerIds)
         {
             Settings settings = new Settings
             {
@@ -32,12 +32,17 @@ namespace JsonGenerator
 
             return JsonConvert.SerializeObject(settings, Formatting.Indented);
         }
+    }
 
-        static void WriteToFile(string s)
-        {
-            File.WriteAllText("configuration.json", s);
-        }
+    class Settings
+    {
+        public string ClientId { get; set; }
+        public string BotToken { get; set; }
+        public IList<string> OwnerIds { get; set; }
+    }
 
+    class Program
+    {
         static void Main(string[] args)
         {
             Console.WriteLine("Create a new configuration.json, leave blank for placeholder value");
@@ -63,7 +68,7 @@ namespace JsonGenerator
             }
 
             Console.WriteLine("\nGenerating empty configuration file in executable folder...");
-            WriteToFile(GenerateJson(clientId, botToken, ownerIds));
+            File.WriteAllText("configuration.json", JsonGenerator.GenerateJson(clientId, botToken, ownerIds));
             Console.WriteLine("Done, press enter to exit.");
             Console.ReadKey();
         }

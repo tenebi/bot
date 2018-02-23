@@ -48,3 +48,6 @@ D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csprojResolveAssemblyReference
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csproj.CoreCompileInputs.cache
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.exe
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.pdb
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\JsonGenerator.exe
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\JsonGenerator.pdb
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\JsonGenerator.exe.config
