@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using tenebot.Services;
 using System.Threading.Tasks;
 using Discord.WebSocket;
-using tenebot.Services;
 
 namespace tenebot.Modules.AdministrationCommands
 {
@@ -20,7 +20,29 @@ namespace tenebot.Modules.AdministrationCommands
             
             bool isOwner = CheckIsOwner.check(Context.User);
             SocketGuild server = Settings._client.GetGuild(Context.Guild.Id);
-            var QueryChannel = server.TextChannels.Where(c => c.Name == "administration");
+
+            
+            
+
+            if(!isOwner)
+            {
+                await ReplyAsync("", false, Embeds.notOwner.Build());
+            }
+
+
+            else
+            {
+                try
+                {
+                    var AdminChannel = server.TextChannels.Where(c => c.Name == "administration").FirstOrDefault();
+                    await AdminChannel.SendMessageAsync("hello");
+                }
+                catch
+                {
+                    Debugging.Log("ADMINISTRATION", "No channel called #administration. Please create a text channel labeled #administration to use administrative commands.", LogSeverity.Critical);
+                }
+            }
+            
             
 
         }

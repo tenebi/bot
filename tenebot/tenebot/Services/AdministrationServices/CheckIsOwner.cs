@@ -1,4 +1,5 @@
-﻿using Discord.WebSocket;
+﻿using Discord;
+using Discord.WebSocket;
 using System;
 using tenebot.Services;
 
@@ -6,6 +7,10 @@ namespace tenebot.Services.AdministrationServices
 {
     public static class CheckIsOwner
     {
+
+        
+
+
         /// <summary>
         /// Checks if the id is an OwnerId in the configuration.json.
         /// </summary>
@@ -23,5 +28,8 @@ namespace tenebot.Services.AdministrationServices
             return false;
 
         }
+
+
+
     }
 }

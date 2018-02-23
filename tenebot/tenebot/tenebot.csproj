@@ -132,7 +132,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administration\Administration.cs" />
     <Compile Include="Modules\Gambling\Choose.cs" />
     <Compile Include="Modules\AdministrationCommands\UserStats.cs" />
     <Compile Include="Modules\Games\rps.cs" />
@@ -146,6 +145,7 @@
     <Compile Include="Modules\Utility\time.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdministrationServices\Embeds.cs" />
     <Compile Include="Services\Debugging.cs" />
     <Compile Include="Services\Settings.cs" />
   </ItemGroup>
@@ -169,6 +169,9 @@
       <Project>{683d6bb0-c0d5-415e-a708-33d80b8f98da}</Project>
       <Name>JsonGenerator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Administration\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

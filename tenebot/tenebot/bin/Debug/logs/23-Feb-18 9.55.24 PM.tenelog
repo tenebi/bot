@@ -1,0 +1,10 @@
+21:55:24 Settings    Loaded configuration.json successfully
+21:55:24 Discord     Discord.Net v1.0.2 (API v6)
+21:55:25 Gateway     Connecting
+21:55:26 Gateway     Connected
+21:55:27 Gateway     Ready
+21:55:31 Command Han tenebi called !getstats
+21:55:32 ADMINISTRAT No channel called #administration. Please create a text channel labeled #administration to use administrative commands.
+21:56:03 Command Han tenebi called !getstats
+21:56:22 Command Han tenebi called !say good
+21:56:22 Command Han Error with command !say good: Unknown command

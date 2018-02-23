@@ -6,6 +6,7 @@ using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using tenebot.Services;
+using tenebot.Services.AdministrationServices;
 
 namespace tenebot
 {
@@ -27,11 +28,13 @@ namespace tenebot
                 .BuildServiceProvider();
 
             Settings.Load();
+            Embeds.InitializeAdminEmbeds();
 
             //subs
             Settings._client.Log += Log;
             Settings._commands.Log += Log;
 
+            
             await RegisterCommandAsync();
             await Settings._client.LoginAsync(TokenType.Bot, Settings.BotToken);
             await Settings._client.StartAsync();
