@@ -17,19 +17,11 @@ namespace tenebot.Modules.AdministrationCommands
         [Command("getstats")]
         public async Task getStats()
         {
-            
             bool isOwner = CheckIsOwner.check(Context.User);
             SocketGuild server = Settings._client.GetGuild(Context.Guild.Id);
 
-            
-            
-
-            if(!isOwner)
-            {
+            if (!isOwner)
                 await ReplyAsync("", false, Embeds.notOwner.Build());
-            }
-
-
             else
             {
                 try
@@ -42,9 +34,6 @@ namespace tenebot.Modules.AdministrationCommands
                     Debugging.Log("ADMINISTRATION", "No channel called #administration. Please create a text channel labeled #administration to use administrative commands.", LogSeverity.Critical);
                 }
             }
-            
-            
-
         }
     }
 }

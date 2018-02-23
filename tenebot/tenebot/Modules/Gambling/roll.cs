@@ -11,11 +11,10 @@ namespace tenebot.Modules.Gambling
         string numbers = "";
         char[] num = new char[9]; 
         [Command("roll")]
-        public async Task roll()
+        public async Task RollFunction()
         {
             for (int i = 0; i < 9; i++)
             {
-
                 int randint = rand.Next(9);
                 num[i] = Convert.ToChar(randint);
                 numbers += randint.ToString();
@@ -28,14 +27,10 @@ namespace tenebot.Modules.Gambling
             foreach (char c in num)
             {
                 if(c == p)
-                {
                     count++;
-                }
-
                 else
-                {
                     break;
-                }
+
                 p = c;
             }
 
@@ -70,15 +65,6 @@ namespace tenebot.Modules.Gambling
             }
 
             await ReplyAsync("", false, builder.Build());
-
-            /* else if (count == 1)
-                 builder.Title = "D U B S!";
-             else if (count == 2)
-                 builder.Title = "T R I P S!";
-             else if (count == 3)
-                 builder.Title = "Q U A D S!";
-             else if (count == 4)
-                 builder.Title = "Q  U  I  N  T  S!";*/
         }
     }
 }
