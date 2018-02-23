@@ -53,11 +53,11 @@ namespace tenebot.Modules.Utility
         [Command("local")]
         public async Task outputTimeGmt()
         {
-            DateTime nowtime = DateTime.Now;
+            DateTime localtime = DateTime.Now;
 
             EmbedBuilder embed = new EmbedBuilder();
             embed.WithTitle($"{Context.User.Username}, the current local time is : ");
-            embed.Description = nowtime.ToShortTimeString();
+            embed.Description = localtime.ToShortTimeString();
             await ReplyAsync("", false, embed.Build());
         }
     }
