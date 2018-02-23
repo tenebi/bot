@@ -25,16 +25,16 @@ namespace tenebot.Modules.Utility
         }
 
         [Command]
-        public async Task Start(SocketGuildUser targetuser)
+        public async Task Start(SocketUser targetuser)
         {
             EmbedBuilder doneBuilder = new EmbedBuilder();
             doneBuilder.WithTitle("RPS is on!")
                 .WithDescription($"{Context.User.Mention} has started a good ol' round of rock paper scissors with {targetuser}, may the best man win!")
                 .WithColor(Color.Orange);
 
-            SocketGuildUser firstuser = Context.User.Mention;
+            SocketUser firstuser = Context.User;
             string message1 = "Your request has been sent to " + targetuser + ", please type your choice here.";
-            string message2 = $"{Context.User.Mention} has invited you to a round of rock paper scissors, please type your choice here.";
+            string message2 = $"{Context.User} has invited you to a round of rock paper scissors, please type your choice here.";
 
             await UserExtensions.SendMessageAsync(firstuser, message1);
             await UserExtensions.SendMessageAsync(targetuser, message2);
