@@ -12,10 +12,10 @@ namespace tenebot.Modules.Utility
         public async Task outputTimeUtc(int add)
         {
             DateTime nowtime = DateTime.UtcNow;
-            if ((add == null) || (add == 0))
+            if ((add == 0))
             {
                 EmbedBuilder embed = new EmbedBuilder();
-                embed.WithTitle($"{Context.User.Username}, the current time in UTC is : ");
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC is : (no int or int is 0)");
                 embed.Description = nowtime.ToShortTimeString();
                 await ReplyAsync("", false, embed.Build());
             }
@@ -25,7 +25,7 @@ namespace tenebot.Modules.Utility
                 nowtime.AddHours(add);
 
                 EmbedBuilder embed = new EmbedBuilder();
-                embed.WithTitle($"{Context.User.Username}, the current time in UTC+"+ add.ToString() +" is : ");
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC+"+ add.ToString() +" is : (positive int)");
                 embed.Description = nowtime.ToShortTimeString();
                 await ReplyAsync("", false, embed.Build());
             }
@@ -35,7 +35,7 @@ namespace tenebot.Modules.Utility
                 nowtime.AddHours(add);
 
                 EmbedBuilder embed = new EmbedBuilder();
-                embed.WithTitle($"{Context.User.Username}, the current time in UTC" + add.ToString() + " is : ");
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC" + add.ToString() + " is : (negative int)");
                 embed.Description = nowtime.ToShortTimeString();
                 await ReplyAsync("", false, embed.Build());
             }
