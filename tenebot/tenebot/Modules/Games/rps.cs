@@ -8,7 +8,7 @@ using System.Timers;
 namespace tenebot.Modules.Utility
 {
     [Group("rps")]
-    public class rps : ModuleBase<SocketCommandContext>
+    public class Rps : ModuleBase<SocketCommandContext>
     {
         private bool IsPrivateMessage(SocketMessage msg)
         {
