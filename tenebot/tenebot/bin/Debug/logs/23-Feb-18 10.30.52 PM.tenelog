@@ -1,0 +1,11 @@
+22:30:53 Settings    Loaded configuration.json successfully
+22:30:53 Discord     Discord.Net v1.0.2 (API v6)
+22:30:53 Gateway     Connecting
+22:30:55 Gateway     Connected
+22:30:55 Gateway     Ready
+22:31:00 Command Han tenebi called !getstats <@254376091089764352>
+22:31:20 Command Han tenebi called !getstats <@110163552106487808>
+22:31:29 Command Han ititan called !getstats <@181108473759662081>
+22:31:29 ADMINISTRAT Administratrative command called by user with insufficient permissions: ititan . If this command call was by you or an administrator, place your client's ID in configuration.json.
+22:31:38 Command Han tenebi called !getstats <@181108473759662081>
+22:34:24 Command Han tenebi called !getstats <@140197514958602240>

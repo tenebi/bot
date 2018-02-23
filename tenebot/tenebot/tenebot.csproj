@@ -132,6 +132,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\Fun\Descramble.cs" />
+    <Compile Include="Modules\Fun\Scramble.cs" />
     <Compile Include="Modules\Gambling\Choose.cs" />
     <Compile Include="Modules\AdministrationCommands\UserStats.cs" />
     <Compile Include="Modules\Games\rps.cs" />

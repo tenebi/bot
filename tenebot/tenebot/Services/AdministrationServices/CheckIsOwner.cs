@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using System;
+using System.Threading.Tasks;
 using tenebot.Services;
 
 namespace tenebot.Services.AdministrationServices
@@ -27,6 +28,11 @@ namespace tenebot.Services.AdministrationServices
             Debugging.Log($"ADMINISTRATION", $"Administratrative command called by user with insufficient permissions: {user.Username} . If this command call was by you or an administrator, place your client's ID in configuration.json.", Discord.LogSeverity.Warning);
             return false;
 
+        }
+
+        public static async Task notOwner(ISocketMessageChannel channel)
+        {
+            await channel.SendMessageAsync("", false, Embeds.notOwner.Build());
         }
 
 

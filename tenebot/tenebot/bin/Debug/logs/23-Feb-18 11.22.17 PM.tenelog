@@ -1,0 +1,20 @@
+23:22:18 Settings    Loaded configuration.json successfully
+23:22:18 Discord     Discord.Net v1.0.2 (API v6)
+23:22:18 Gateway     Connecting
+23:22:19 Gateway     Connected
+23:22:19 Gateway     Ready
+23:22:22 Command Han tenebi called !scramble everyone
+23:22:29 Command Han tenebi called !scramble everyone
+23:22:30 Rest        Preemptive Rate limit triggered: guilds/400377518500347905/members/
+23:22:32 Gateway     A MessageReceived handler is blocking the gateway task.
+23:22:34 Gateway     A MessageReceived handler has thrown an unhandled exception.:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Program.<HandleCommandAsync>d__5.MoveNext() in C:\Users\cPC\Desktop\bot\tenebot\tenebot\Program.cs:line 72
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.EventExtensions.<InvokeAsync>d__1`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.WebSocket.DiscordSocketClient.<TimeoutWrap>d__128.MoveNext()
