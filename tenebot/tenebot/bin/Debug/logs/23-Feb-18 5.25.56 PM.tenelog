@@ -1,0 +1,11 @@
+17:25:56 Settings    Loaded configuration.json successfully
+17:25:57 Discord     Discord.Net v1.0.2 (API v6)
+17:25:58 Gateway     Connecting
+17:25:59 Gateway     Connected
+17:25:59 Gateway     Ready
+17:26:09 Command Han tomacatx1 called !getstats
+17:26:09 ADMINISTRAT Administrator command called by user with insufficient permissions: tomacatx1 . If this command call was by you or an administrator, place your client's ID in configuration.json.
+17:26:11 Command Han tomacatx1 called !time utc 2
+17:26:15 Command Han tomacatx1 called !time utc
+17:26:15 Command Han Error with command !time utc: The input text has too many parameters
+17:26:18 Command Han tomacatx1 called !time local

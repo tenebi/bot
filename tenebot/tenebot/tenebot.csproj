@@ -132,7 +132,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administration\Administration.cs" />
+    <Compile Include="Modules\AdministrationCommands\UserStats.cs" />
+    <Compile Include="Services\AdministrationServices\CheckIsOwner.cs" />
     <Compile Include="Modules\Gambling\Flip.cs" />
     <Compile Include="Modules\Gambling\roll.cs" />
     <Compile Include="Modules\Reactions\Hmm.cs" />
