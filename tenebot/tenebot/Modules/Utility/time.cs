@@ -1,9 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -12,11 +9,8 @@ namespace tenebot.Modules.Utility
     [Group("timer")]
     public class Timer : ModuleBase<SocketCommandContext>
     {
-
-
         System.Timers.Timer aTimer = new System.Timers.Timer();
         string timerMessage;
-
 
         public async Task TimerDone(string message)
         {

@@ -1,0 +1,12 @@
+16:01:53 Settings    Loaded configuration.json successfully
+16:01:53 Discord     Discord.Net v1.0.2 (API v6)
+16:01:54 Gateway     Connecting
+16:01:55 Gateway     Connected
+16:01:55 Gateway     Ready
+16:02:05 Command Han Jovan called !time local!time utc!time utc 1
+16:02:05 Command Han Error with command !time local!time utc!time utc 1: The input text has too many parameters
+16:02:08 Command Han tomacatx1 called !time local
+16:02:17 Command Han tomacatx1 called !time utc
+16:02:17 Command Han Error with command !time utc: The input text has too few parameters
+16:02:23 Command Han tomacatx1 called !time utc 1
+16:02:28 Command Han tomacatx1 called !time utc -1

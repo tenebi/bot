@@ -1,9 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace tenebot.Modules.Gambling
@@ -16,7 +13,6 @@ namespace tenebot.Modules.Gambling
         [Command("roll")]
         public async Task roll()
         {
-
             for (int i = 0; i < 9; i++)
             {
 
@@ -83,11 +79,6 @@ namespace tenebot.Modules.Gambling
                  builder.Title = "Q U A D S!";
              else if (count == 4)
                  builder.Title = "Q  U  I  N  T  S!";*/
-
-
-
-
-
         }
     }
 }

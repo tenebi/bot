@@ -1,0 +1,15 @@
+15:59:30 Settings    Loaded configuration.json successfully
+15:59:30 Discord     Discord.Net v1.0.2 (API v6)
+15:59:31 Gateway     Connecting
+15:59:32 Gateway     Connected
+15:59:32 Gateway     Ready
+15:59:39 Command Han Jovan called !time
+15:59:39 Command Han Error with command !time: Unknown command
+15:59:49 Command Han Jovan called !time utc
+15:59:49 Command Han Error with command !time utc: The input text has too few parameters
+15:59:56 Command Han Jovan called !time utc 1
+16:00:05 Command Han Jovan called !time utc 0
+16:00:10 Command Han Jovan called !time gmt
+16:00:10 Command Han Error with command !time gmt: Unknown command
+16:00:14 Command Han Jovan called !time est
+16:00:14 Command Han Error with command !time est: Unknown command
