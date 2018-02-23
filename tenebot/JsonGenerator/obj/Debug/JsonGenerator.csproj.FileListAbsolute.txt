@@ -6,3 +6,10 @@ D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csprojResolveAssem
 D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csproj.CoreCompileInputs.cache
 D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.exe
 D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.pdb
+C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe.config
+C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe
+C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.pdb
+C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.exe
+C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.pdb
