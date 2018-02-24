@@ -1,0 +1,27 @@
+22:40:12 Settings    Loaded configuration.json successfully
+22:40:12 Discord     Discord.Net v1.0.2 (API v6)
+22:40:13 Gateway     Connecting
+22:40:13 Gateway     Connected
+22:40:14 Gateway     Ready
+22:40:15 Command Han Jovan called !hmm
+22:40:16 Command     Discord.Commands.CommandException: Error occurred executing "hmm" for Jovan#2244 in space hunters/tenebot. ---> System.Data.SqlClient.SqlException: Violation of PRIMARY KEY constraint 'PK__Users__1788CC4C62F8B71F'. Cannot insert duplicate key in object 'dbo.Users'. The duplicate key value is (123456789).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at tenebot.Services.Database.TestDatabase() in D:\Gits\tenebot\tenebot\tenebot\Services\Database.cs:line 24
+   at tenebot.Modules.Reactions.Hmm.<Hmmm>d__2.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Modules\Reactions\Hmm.cs:line 18
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+22:40:16 Command Han Error with command !hmm: Violation of PRIMARY KEY constraint 'PK__Users__1788CC4C62F8B71F' Cannot insert duplicate key in object 'dboUsers' The duplicate key value is (123456789)The statement has been terminated
