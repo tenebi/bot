@@ -1,0 +1,11 @@
+12:49:05 Settings    Loaded configuration.json successfully
+12:49:05 Discord     Discord.Net v1.0.2 (API v6)
+12:49:06 Gateway     Connecting
+12:49:07 Gateway     Connected
+12:49:07 Gateway     Ready
+12:49:12 Command Han Jovan called !getstats
+12:49:12 Command Han Error with command !getstats: The input text has too few parameters
+12:49:19 Command Han Jovan called !getstats asd
+12:49:19 Command Han Error with command !getstats asd: User not found
+12:49:46 Command Han tenebi called !getstats <@140197514958602240>
+12:49:46 Administrat No channel called #doesntexist. Please create a text channel labeled #doesntexist to use administrative commands.
