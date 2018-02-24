@@ -28,6 +28,8 @@ namespace tenebot.Modules.AdministrationCommands
         [Command("purge")]
         public async Task purge(SocketGuildUser user, int amount)
         {
+
+
             var channel = Context.Channel;
             var userAsSocket = Settings._client.GetGuild(Context.Guild.Id).GetUser(Context.User.Id);
             bool userHasPermission = userAsSocket.GuildPermissions.ManageMessages;
