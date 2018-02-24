@@ -47,8 +47,7 @@ namespace tenebot.Services
         {
             string datetime = DateTime.Now.ToString().Replace(":", ".").Replace(@"\", ".").Replace("/", ".");
             string newPath = Path.Combine(path, datetime + ".tenelog");
-            newPath = (newPath.Substring(0, 3)).Replace(".", ":") + newPath.Substring(3, newPath.Length - 3);
-            //.Replace(":", ".").Replace(@"\", ".").Replace("/", ".");
+
             try
             {
                 if (!Directory.Exists(path))

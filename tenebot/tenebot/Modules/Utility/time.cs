@@ -2,84 +2,76 @@
 using Discord.Commands;
 using System;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace tenebot.Modules.Utility
 {
-    [Group("timer")]
-    public class Timer : ModuleBase<SocketCommandContext>
+    [Group("time")]
+    public class WhatTime :  ModuleBase<SocketCommandContext>
     {
-        System.Timers.Timer aTimer = new System.Timers.Timer();
-        string timerMessage;
-
-        public async Task TimerDone(string message)
+        [Command]
+        public async Task OutputTimeHelp()
         {
-            EmbedBuilder doneBuilder = new EmbedBuilder();
-            doneBuilder.WithTitle(":stopwatch: Brring! :stopwatch:")
-                .WithDescription($"{Context.User.Mention}, {message}!")
-                .WithColor(Color.Orange);
-
-            await ReplyAsync(Context.User.Mention);
-            await ReplyAsync("", false, doneBuilder.Build());
+            EmbedBuilder embed = new EmbedBuilder();
+            embed.WithTitle($"{Context.User.Username}, !time usage:");
+            embed.Description = "!time timezone +-n\n\nExamples:\n!time utc\n!time utc +2";
+            await ReplyAsync("", false, embed.Build());
         }
 
-        void HandleTimer(Object source, ElapsedEventArgs e)
+        [Command("UTC")]
+        public async Task OutputTimeUtc(double add = 0)
         {
-            TimerDone(timerMessage);
-            aTimer.Stop();
+            DateTime nowtime = DateTime.UtcNow;
+            EmbedBuilder embed = new EmbedBuilder();
+
+            if ((add == 0))
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC is :");
+            else if (add > 0)
+            {
+                nowtime = nowtime.AddHours(add);
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC+"+ add.ToString() +" is :");
+            }
+            else if (add < 0)
+            {
+                nowtime = nowtime.AddHours(add);
+                embed.WithTitle($"{Context.User.Username}, the current time in UTC" + add.ToString() + " is :");
+            }
+
+            embed.Description = nowtime.ToShortTimeString();
+            await ReplyAsync("", false, embed.Build());
         }
 
-        [Command("secs")]
-        public async Task secs(int time, [Remainder] string message)
+        [Command("GMT")]
+        public async Task OutputTimeGmt(double add = 0)
         {
-            EmbedBuilder setBuilder = new EmbedBuilder();
-            setBuilder.WithTitle($":stopwatch: Timer set! :stopwatch: ")
-                .WithDescription($"You will be reminded in **{time}** seconds with the message **{message}**")
-                .WithColor(Color.Orange);
+            DateTime nowtime = DateTime.UtcNow;
+            EmbedBuilder embed = new EmbedBuilder();
 
-            int timesecs = time * 1000;
+            if ((add == 0))
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT is :");
+            else if (add > 0)
+            {
+                nowtime = nowtime.AddHours(add);
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT+" + add.ToString() + " is :");
+            }
+            else if (add < 0)
+            {
+                nowtime = nowtime.AddHours(add);
+                embed.WithTitle($"{Context.User.Username}, the current time in GMT" + add.ToString() + " is :");
+            }
 
-            await ReplyAsync("", false, setBuilder.Build());
-            aTimer.Elapsed += new ElapsedEventHandler(HandleTimer);
-            aTimer.Interval = timesecs;
-            aTimer.Start();
-            timerMessage = message;
-
+            embed.Description = nowtime.ToShortTimeString();
+            await ReplyAsync("", false, embed.Build());
         }
 
-        [Command("mins")]
-        public async Task mins(int time, [Remainder] string message)
+        [Command("local")]
+        public async Task OutputTimeGmt()
         {
-            EmbedBuilder setBuilder = new EmbedBuilder();
-            setBuilder.WithTitle($":stopwatch: Timer set! :stopwatch: ")
-                .WithDescription($"You will be reminded in **{time}** minutes with the message **{message}**")
-                .WithColor(Color.Orange);
+            DateTime localtime = DateTime.Now;
 
-            int timesecs = time * 60000;
-
-            await ReplyAsync("", false, setBuilder.Build());
-            aTimer.Elapsed += new ElapsedEventHandler(HandleTimer);
-            aTimer.Interval = timesecs;
-            aTimer.Start();
-            timerMessage = message;
-
-        }
-
-        [Command("hrs")]
-        public async Task hrs(int time, [Remainder] string message)
-        {
-            EmbedBuilder setBuilder = new EmbedBuilder();
-            setBuilder.WithTitle($":stopwatch: Timer set! :stopwatch: ")
-                .WithDescription($"You will be reminded in **{time}** hours with the message **{message}**")
-                .WithColor(Color.Orange);
-
-            int timesecs = time * 3600000;
-
-            await ReplyAsync("", false, setBuilder.Build());
-            aTimer.Elapsed += new ElapsedEventHandler(HandleTimer);
-            aTimer.Interval = timesecs;
-            aTimer.Start();
-            timerMessage = message;
+            EmbedBuilder embed = new EmbedBuilder();
+            embed.WithTitle($"{Context.User.Username}, the current local time is : ");
+            embed.Description = localtime.ToShortTimeString();
+            await ReplyAsync("", false, embed.Build());
         }
     }
 }

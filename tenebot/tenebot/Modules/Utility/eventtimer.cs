@@ -9,7 +9,6 @@ using System.Timers;
 
 namespace tenebot.Modules.Utility
 {
-    
     public class Times : ModuleBase<SocketCommandContext>
     {
         [Command("daily")]

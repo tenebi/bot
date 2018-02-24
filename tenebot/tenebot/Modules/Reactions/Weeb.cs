@@ -9,18 +9,20 @@ using System.Threading.Tasks;
 
 namespace tenebot.Modules.Reactions
 {
-    public class weeb : ModuleBase<SocketCommandContext>
+    public class Weeb : ModuleBase<SocketCommandContext>
     {
         Random rand = new Random();
         string input;
         string[] links = {  "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/1.jpg",
                             "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/2.jpg",
                             "https://www.jovanzlatanovic.com:2083/cpsess3686105827/viewer/home%2fjovanzl%2fpublic_html%2ftenebi%2ftoms_bullshit/3.jpg" };
+
         [Command("weeb")]
-        public async Task weebT(string user = null)
+        public async Task WeebT(string user = null)
         {
             var guild = Context.Guild;
             EmbedBuilder builder = new EmbedBuilder();
+
             if (user.Contains("@") == false)
             {
                 builder.WithTitle("fucking weebs")
@@ -29,10 +31,7 @@ namespace tenebot.Modules.Reactions
                     .WithColor(Color.Orange);
             }
             else if (user == null)
-            {
                 await ReplyAsync("", false, builder.Build());
-
-            }
             else
             {
                 builder.Description = $"{Context.User.Mention} is weebing **{user}**";

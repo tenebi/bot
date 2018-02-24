@@ -142,9 +142,9 @@
     <Compile Include="Modules\Gambling\roll.cs" />
     <Compile Include="Modules\Reactions\Hmm.cs" />
     <Compile Include="Modules\Reactions\Weeb.cs" />
-    <Compile Include="Modules\Utility\CTime.cs" />
-    <Compile Include="Modules\Utility\eventtimer.cs" />
     <Compile Include="Modules\Utility\time.cs" />
+    <Compile Include="Modules\Utility\eventtimer.cs" />
+    <Compile Include="Modules\Utility\timer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdministrationServices\Embeds.cs" />
