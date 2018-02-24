@@ -167,14 +167,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JsonGenerator\JsonGenerator.csproj">
-      <Project>{683d6bb0-c0d5-415e-a708-33d80b8f98da}</Project>
-      <Name>JsonGenerator</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Administration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,83 +1,194 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
+using System.Text;
+using System.Threading;
 
 namespace JsonGenerator
 {
-    public static class JsonGenerator
+    [Serializable]
+    class Format
     {
-        /// <summary>
-        /// Generates a json file, meant for tenebots configuration.
-        /// </summary>
-        /// <param name="clientId">Client id</param>
-        /// <param name="botToken">Bot token</param>
-        /// <param name="ownerIds">One or multiple owner ids</param>
-        /// <returns>The generated json string</returns>
-        public static string GenerateJson(string clientId, string botToken, List<string> ownerIds, string adminChannel)
-        {
-            Settings settings = new Settings
-            {
-                ClientId = "client_id_here",
-                BotToken = "bot_token_here",
-                OwnerIds = new List<string> { "owner_id", "or_multiple" },
-                AdminChannel = "admin_channel_name"
-            };
-
-            if (clientId != "")
-                settings.ClientId = clientId;
-            if (botToken != "")
-                settings.BotToken = botToken;
-            if (ownerIds.Capacity != 0)
-                settings.OwnerIds = ownerIds;
-            if (adminChannel != "")
-                settings.AdminChannel = adminChannel;
-
-            return JsonConvert.SerializeObject(settings, Formatting.Indented);
-        }
-    }
-
-    class Settings
-    {
-        public string ClientId { get; set; }
-        public string BotToken { get; set; }
-        public IList<string> OwnerIds { get; set; }
-        public string AdminChannel { get; set; }
+        public List<string> Properties = new List<string>();
+        public List<List<string>> Values = new List<List<string>>();
     }
 
     class Program
     {
-        static void Main(string[] args)
+        static string saveLocation = "jsonformat";
+
+        static void WriteTitle()
         {
-            Console.WriteLine("Create a new configuration.json, leave blank for placeholder value");
-            Console.Write("\nClient ID: ");
-            string clientId = Console.ReadLine();
-            Console.Write("\nBot token: ");
-            string botToken = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("JSONGenerator 2.0\n");
+        }
 
-            List<string> ownerIds = new List<string>();
+        static bool WriteFormatToFile(Format format)
+        {
+            try
+            {
+                using (Stream stream = File.Create(saveLocation))
+                {
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    formatter.Serialize(stream, format);
+                }
 
-            Console.WriteLine("\nEnter to confirm, leave blank to end");
-            int counter = 0;
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error writing to file: {e.Message}");
+                return false;
+            }
+        }
+
+        static string CreateJson(Format format)
+        {
+            StringBuilder sb = new StringBuilder();
+            StringWriter sw = new StringWriter(sb);
+
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.WriteStartObject();
+
+                int counter = 0;
+                foreach (string property in format.Properties)
+                {
+                    writer.WritePropertyName(property);
+
+                    if (format.Values[counter].Count > 1)
+                    {
+                        writer.WriteStartArray();
+
+                        foreach (string value in format.Values[counter])
+                            writer.WriteValue(value);
+
+                        writer.WriteEnd();
+                    }
+                    else
+                    {
+                        foreach (string value in format.Values[counter])
+                            writer.WriteValue(value);
+                    }
+
+                    counter++;
+                }
+
+                writer.WriteEndObject();
+
+                return sb.ToString();
+            }
+        }
+
+        static void NewFormat()
+        {
+            WriteTitle();
+            Console.WriteLine("  New JSON format\n  Write !end to end\n");
+
+            Format format = new Format();
+
             while (true)
             {
-                counter++;
+                Console.Write("  Property name:");
+                string input = Console.ReadLine();
 
-                Console.Write($"Owner {counter} ID: ");
-                string OwnerId = Console.ReadLine();
-                if (OwnerId != "")
-                    ownerIds.Add(OwnerId);
-                else
+                if (!String.IsNullOrEmpty(input) && Char.IsLetter(input[0]))
+                    format.Properties.Add(input);
+                else if (input == "!end")
                     break;
+                else
+                    Console.WriteLine("  Property name cannot be empty or start with a number.\n");
             }
 
-            Console.Write("\nAdmin channel: ");
-            string adminChannel = Console.ReadLine();
+            if (format.Properties.Count < 1)
+            {
+                Console.WriteLine("\n  No properties set, nothing is done.");
+                Thread.Sleep(1000);
+            }
+            else
+            {
+                if (WriteFormatToFile(format))
+                {
+                    Console.WriteLine("\n  Saved format.");
+                    Thread.Sleep(1000);
+                }
+            }
 
-            Console.WriteLine("\nGenerating empty configuration file in executable folder...");
-            File.WriteAllText("configuration.json", JsonGenerator.GenerateJson(clientId, botToken, ownerIds, adminChannel));
-            Console.WriteLine("Done, press enter to exit.");
-            Console.ReadKey();
+            Console.WriteLine("done");
+        }
+
+        static Format LoadFormat()
+        {
+            Format format = new Format();
+
+            try
+            {
+                using (Stream stream = File.Open(saveLocation, FileMode.Open))
+                {
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    format = (Format)formatter.Deserialize(stream);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"\n  Failed to load format file: {e.Message}");
+                Thread.Sleep(1000);
+            }
+
+            return format;
+        }
+
+        static void NewFile()
+        {
+            Format format = LoadFormat();
+
+            WriteTitle();
+            Console.WriteLine("  New JSON file\n");
+            Console.WriteLine("  Enter one or multiple values per property, leave empty to continue\n");
+
+            foreach (string property in format.Properties)
+            {
+                List<string> valuesOfProperty = new List<string>();
+                string input = "";
+
+                while(true)
+                {
+                    Console.Write($"  {property}:");
+                    input = Console.ReadLine();
+                    if (input == "")
+                        break;
+                    else
+                        valuesOfProperty.Add(input);
+                }
+
+                format.Values.Add(valuesOfProperty);
+            }
+
+            File.WriteAllText("configuration.json", CreateJson(format));
+            Console.WriteLine("\n  Generated new json file");
+            Thread.Sleep(1000);
+        }
+
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                WriteTitle();
+                Console.WriteLine("  1) Create new json format");
+                Console.WriteLine("  2) Create a json file");
+                Console.WriteLine("  3) Exit");
+                Console.Write("\n> ");
+                string input = Console.ReadLine();
+
+                if (input == "1")
+                    NewFormat();
+                else if (input == "2")
+                    NewFile();
+                else if (input == "3")
+                    break;
+            }
         }
     }
 }

@@ -1,22 +1,9 @@
-D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe.config
-D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe
-D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.pdb
-D:\Gits\tenebot\tenebot\JsonGenerator\bin\Debug\Newtonsoft.Json.dll
-D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csprojResolveAssemblyReference.cache
-D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csproj.CoreCompileInputs.cache
-D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.exe
-D:\Gits\tenebot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.pdb
-C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe.config
-C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe
-C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.pdb
-C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csprojResolveAssemblyReference.cache
-C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csproj.CoreCompileInputs.cache
-C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.exe
-C:\Users\Tom\Desktop\tenebot\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.pdb
-C:\Users\cPC\Desktop\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe.config
-C:\Users\cPC\Desktop\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.exe
-C:\Users\cPC\Desktop\bot\tenebot\JsonGenerator\bin\Debug\JsonGenerator.pdb
-C:\Users\cPC\Desktop\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csprojResolveAssemblyReference.cache
-C:\Users\cPC\Desktop\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.csproj.CoreCompileInputs.cache
-C:\Users\cPC\Desktop\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.exe
-C:\Users\cPC\Desktop\bot\tenebot\JsonGenerator\obj\Debug\JsonGenerator.pdb
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\bin\Debug\JsonGenerator.exe.config
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\bin\Debug\JsonGenerator.exe
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\bin\Debug\JsonGenerator.pdb
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\obj\Debug\JsonGenerator.csprojResolveAssemblyReference.cache
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\obj\Debug\JsonGenerator.csproj.CoreCompileInputs.cache
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\obj\Debug\JsonGenerator.exe
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\obj\Debug\JsonGenerator.pdb
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\bin\Debug\Newtonsoft.Json.dll
+F:\OneDrive\Programming\Visual Studio\JsonGenerator\JsonGenerator\bin\Debug\Newtonsoft.Json.xml
