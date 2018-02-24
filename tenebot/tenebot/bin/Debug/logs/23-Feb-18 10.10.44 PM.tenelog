@@ -1,0 +1,9 @@
+22:10:44 Settings    Loaded configuration.json successfully
+22:10:44 Discord     Discord.Net v1.0.2 (API v6)
+22:10:45 Gateway     Connecting
+22:10:46 Gateway     Connected
+22:10:46 Gateway     Ready
+22:10:50 Command Han tomacatx1 called !rps
+22:10:50 Command Han Error with command !rps: The input text has too few parameters
+22:10:54 Command Han tomacatx1 called !rps help
+22:11:03 Command Han tomacatx1 called !rps <@181108473759662081>

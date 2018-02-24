@@ -15,19 +15,34 @@ namespace tenebot.Modules.AdministrationCommands
     public class UserStats : ModuleBase<SocketCommandContext>
     {
         [Command("getstats")]
-        public async Task getStats()
+        public async Task getStats(SocketGuildUser user)
         {
             bool isOwner = CheckIsOwner.check(Context.User);
             SocketGuild server = Settings._client.GetGuild(Context.Guild.Id);
 
-            if (!isOwner)
+            EmbedBuilder statEmbed = new EmbedBuilder();
+            statEmbed.WithTitle($"{user.Username}'s account statistics")
+                .AddInlineField("Created at:", user.CreatedAt)
+                .AddInlineField($"Joined {user.Guild.Name} at:", user.JoinedAt)
+                .AddInlineField("ID:", user.Id)
+                .WithThumbnailUrl(user.GetAvatarUrl())
+                .WithColor(Color.DarkGreen);
+          
+            if(!isOwner)
+            {
                 await ReplyAsync("", false, Embeds.notOwner.Build());
+            }
             else
             {
                 try
                 {
+<<<<<<< HEAD
                     var AdminChannel = server.TextChannels.Where(c => c.Name == Settings.AdminChannel).FirstOrDefault();
                     await AdminChannel.SendMessageAsync("hello");
+=======
+                    var AdminChannel = server.TextChannels.Where(c => c.Name == "administration").FirstOrDefault();
+                    await AdminChannel.SendMessageAsync("", false, statEmbed.Build());
+>>>>>>> develop
                 }
                 catch
                 {
