@@ -9,7 +9,6 @@ namespace tenebot.Modules.Gambling
 {
     public class Choose : ModuleBase<SocketCommandContext>
     {
-        Random rand = new Random();
         [Command("choose")]
         public async Task ChoiceFunction(string args)
         {

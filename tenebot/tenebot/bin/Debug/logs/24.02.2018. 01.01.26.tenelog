@@ -1,0 +1,8 @@
+01:01:26 Settings    Loaded configuration.json successfully
+01:01:26 Command     Class tenebot.Modules.Reactions.Ddlc is not public and cannot be loaded. To suppress this message, mark the class with DontAutoLoadAttribute.
+01:01:26 Discord     Discord.Net v1.0.2 (API v6)
+01:01:27 Gateway     Connecting
+01:01:28 Gateway     Connected
+01:01:28 Gateway     Ready
+01:01:32 Command Han Jovan called !ddlc
+01:01:32 Command Han Error with command !ddlc: Unknown command
