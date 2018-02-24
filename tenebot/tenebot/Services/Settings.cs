@@ -22,6 +22,7 @@ namespace tenebot.Services
         public static DiscordSocketClient _client;
         public static CommandService _commands;
         public static IServiceProvider _services;
+        public static DiscordSocketConfig _config = new DiscordSocketConfig { MessageCacheSize = 100 };
 
         private static string clientId;
         private static string botToken;

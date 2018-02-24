@@ -29,5 +29,11 @@ namespace tenebot.Services.AdministrationServices
         {
             await channel.SendMessageAsync("", false, Embeds.notOwner.Build());
         }
+
+        public static async Task insufficientPermission(ISocketMessageChannel channel, string message)
+        {
+            Embeds.notOwner.Description = message;
+            await channel.SendMessageAsync("", false, Embeds.notOwner.Build());
+        }
     }
 }

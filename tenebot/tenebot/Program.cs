@@ -14,12 +14,15 @@ namespace tenebot
     {
         static void Main(string[] args) => new Program().RunBotAsync().GetAwaiter().GetResult();
 
-        
+
         private Random rand = new Random();
 
         public async Task RunBotAsync()
         {
-            Settings._client = new DiscordSocketClient();
+
+
+
+            Settings._client = new DiscordSocketClient(Settings._config);
             Settings._commands = new CommandService();
 
             Settings._services = new ServiceCollection()
@@ -31,21 +34,17 @@ namespace tenebot
             Embeds.InitializeAdminEmbeds();
 
             //subs
-            Settings._client.Log += Log;
-            Settings._commands.Log += Log;
+            Settings._client.Log += Debugging.Log;
+            Settings._commands.Log += Debugging.Log;
+            Settings._client.MessageUpdated += MessageUpdated;
 
-            
+
             await RegisterCommandAsync();
             await Settings._client.LoginAsync(TokenType.Bot, Settings.BotToken);
             await Settings._client.StartAsync();
             await Task.Delay(-1);
         }
 
-        private Task Log(LogMessage message)
-        {
-            Debugging.Log(message);
-            return Task.CompletedTask;
-        }
 
         public async Task RegisterCommandAsync()
         {
@@ -77,6 +76,11 @@ namespace tenebot
                     await arg.Channel.SendMessageAsync("", false, embed.Build());
                 }
             }
+        }
+
+        private async Task MessageUpdated(Cacheable<IMessage, ulong> before, SocketMessage after, ISocketMessageChannel channel)
+        {
+            var message = await before.GetOrDownloadAsync();
         }
     }
 }
