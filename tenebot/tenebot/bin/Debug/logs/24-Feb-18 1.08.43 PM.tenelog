@@ -1,0 +1,8 @@
+13:08:44 Settings    Loaded configuration.json successfully
+13:08:44 Discord     Discord.Net v1.0.2 (API v6)
+13:08:45 Gateway     Connecting
+13:08:45 Gateway     Connected
+13:08:46 Gateway     Ready
+13:08:48 Command Han tenebi called !purge
+13:08:48 Command Han Error with command !purge: The input text has too few parameters
+13:08:53 Command Han tenebi called !purge <@140197514958602240> 10

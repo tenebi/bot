@@ -1,6 +1,7 @@
 ﻿using System;
 using Discord;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace tenebot.Services
 {
@@ -84,9 +85,10 @@ namespace tenebot.Services
         /// Prints a message on the debug console and writes to output log.
         /// </summary>
         /// <param name="message">Log message for the message.</param>
-        public static void Log(LogMessage message)
+        public static Task Log(LogMessage message)
         {
             LogMessage(message);
+            return Task.CompletedTask;
         }
 
         /// <summary>
