@@ -19,9 +19,6 @@ namespace tenebot
 
         public async Task RunBotAsync()
         {
-
-
-
             Settings._client = new DiscordSocketClient(Settings._config);
             Settings._commands = new CommandService();
 
@@ -44,7 +41,6 @@ namespace tenebot
             await Settings._client.StartAsync();
             await Task.Delay(-1);
         }
-
 
         public async Task RegisterCommandAsync()
         {
