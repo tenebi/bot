@@ -14,6 +14,7 @@ namespace tenebot.Services
         public string ClientId { get; set; }
         public string BotToken { get; set; }
         public IList<string> OwnerIds { get; set; }
+        public string AdminChannel { get; set; }
     }
 
     public static class Settings
@@ -22,10 +23,11 @@ namespace tenebot.Services
         public static CommandService _commands;
         public static IServiceProvider _services;
 
-
         private static string clientId;
         private static string botToken;
         private static IList<string> ownerIds;
+        private static string adminChannel;
+
         private static string configPath = "configuration.json";
 
         private static string ReadFile()
@@ -45,6 +47,10 @@ namespace tenebot.Services
         /// Returns a list of owner ids as strings.
         /// </summary>
         public static IList<string> OwnerIds { get => ownerIds; }
+        /// <summary>
+        /// Returns the admin channel name.
+        /// </summary>
+        public static string AdminChannel { get => adminChannel; set => adminChannel = value; }
 
         /// <summary>
         /// Loads the settings from a json file and stores it in the settings class variable.
@@ -61,6 +67,7 @@ namespace tenebot.Services
                 clientId = middleMan.ClientId;
                 botToken = middleMan.BotToken;
                 ownerIds = middleMan.OwnerIds;
+                adminChannel = middleMan.AdminChannel;
 
                 Debugging.Log("Settings", $"Loaded configuration.json successfully");
                 return true;

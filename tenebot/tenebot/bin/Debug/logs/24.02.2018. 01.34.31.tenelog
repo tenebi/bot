@@ -1,0 +1,7 @@
+01:34:31 Settings    Loaded configuration.json successfully
+01:34:32 Discord     Discord.Net v1.0.2 (API v6)
+01:34:32 Gateway     Connecting
+01:34:33 Gateway     Connected
+01:34:33 Gateway     Ready
+01:34:35 Command Han Jovan called !getstats
+01:34:35 Administrat No channel called #doesntexist. Please create a text channel labeled #doesntexist to use administrative commands.

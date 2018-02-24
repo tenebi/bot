@@ -26,12 +26,17 @@ namespace tenebot.Modules.AdministrationCommands
             {
                 try
                 {
-                    var AdminChannel = server.TextChannels.Where(c => c.Name == "administration").FirstOrDefault();
+                    var AdminChannel = server.TextChannels.Where(c => c.Name == Settings.AdminChannel).FirstOrDefault();
                     await AdminChannel.SendMessageAsync("hello");
                 }
                 catch
                 {
-                    Debugging.Log("ADMINISTRATION", "No channel called #administration. Please create a text channel labeled #administration to use administrative commands.", LogSeverity.Critical);
+                    string msg = $"No channel called #{Settings.AdminChannel}. Please create a text channel labeled #{Settings.AdminChannel} to use administrative commands.";
+
+                    Debugging.Log("Administration", msg, LogSeverity.Error);
+
+                    EmbedBuilder embed = new EmbedBuilder() { Title = "Error", Description = msg };
+                    await ReplyAsync("", false, embed.Build());
                 }
             }
         }

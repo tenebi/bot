@@ -14,13 +14,14 @@ namespace JsonGenerator
         /// <param name="botToken">Bot token</param>
         /// <param name="ownerIds">One or multiple owner ids</param>
         /// <returns>The generated json string</returns>
-        public static string GenerateJson(string clientId, string botToken, List<string> ownerIds)
+        public static string GenerateJson(string clientId, string botToken, List<string> ownerIds, string adminChannel)
         {
             Settings settings = new Settings
             {
                 ClientId = "client_id_here",
                 BotToken = "bot_token_here",
-                OwnerIds = new List<string> { "owner_id", "or_multiple" }
+                OwnerIds = new List<string> { "owner_id", "or_multiple" },
+                AdminChannel = "admin_channel_name"
             };
 
             if (clientId != "")
@@ -29,6 +30,8 @@ namespace JsonGenerator
                 settings.BotToken = botToken;
             if (ownerIds.Capacity != 0)
                 settings.OwnerIds = ownerIds;
+            if (adminChannel != "")
+                settings.AdminChannel = adminChannel;
 
             return JsonConvert.SerializeObject(settings, Formatting.Indented);
         }
@@ -39,6 +42,7 @@ namespace JsonGenerator
         public string ClientId { get; set; }
         public string BotToken { get; set; }
         public IList<string> OwnerIds { get; set; }
+        public string AdminChannel { get; set; }
     }
 
     class Program
@@ -67,8 +71,11 @@ namespace JsonGenerator
                     break;
             }
 
+            Console.Write("\nAdmin channel: ");
+            string adminChannel = Console.ReadLine();
+
             Console.WriteLine("\nGenerating empty configuration file in executable folder...");
-            File.WriteAllText("configuration.json", JsonGenerator.GenerateJson(clientId, botToken, ownerIds));
+            File.WriteAllText("configuration.json", JsonGenerator.GenerateJson(clientId, botToken, ownerIds, adminChannel));
             Console.WriteLine("Done, press enter to exit.");
             Console.ReadKey();
         }
