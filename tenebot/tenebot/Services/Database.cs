@@ -9,7 +9,7 @@ namespace tenebot.Services
 {
     public static class Database
     {
-        private static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TenebotDatabase.mdf;Integrated Security=True";
+        private static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TenebotDatabase.mdf;Integrated Security=False";
 
         public static void TestDatabase()
         {

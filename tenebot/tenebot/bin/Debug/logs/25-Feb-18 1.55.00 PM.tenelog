@@ -1,0 +1,7 @@
+13:55:00 Settings    Loaded configuration.json successfully
+13:55:00 Discord     Discord.Net v1.0.2 (API v6)
+13:55:01 Gateway     Connecting
+13:55:02 Gateway     Connected
+13:55:02 Gateway     Ready
+13:55:05 Command Han tenebi called !scan
+13:55:06 Administrat Administratrative command called by user with insufficient permissions: tenebi . If this command call was by you or an administrator, place your client's ID in configuration.json.
