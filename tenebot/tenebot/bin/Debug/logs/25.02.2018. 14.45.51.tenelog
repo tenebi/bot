@@ -1,0 +1,29 @@
+14:45:51 Settings    Loaded configuration.json successfully
+14:45:51 Discord     Discord.Net v1.0.2 (API v6)
+14:45:51 Gateway     Connecting
+14:45:52 Gateway     Connected
+14:45:52 Command Han Jovan called !ddlc
+14:45:52 Gateway     Ready
+14:45:53 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/dokis/8.jpg' is reachable
+14:45:53 CheckHttpRe 'http://139.59.162.138/tenebot/dokis/8.jpg' is reachable
+14:46:02 Command Han Jovan called !pat <@254376091089764352>
+14:46:02 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/2.jpg' is reachable
+14:46:02 CheckHttpRe Remote server returned 404, not found
+14:46:02 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/2.png' is reachable
+14:46:02 CheckHttpRe Remote server returned 404, not found
+14:46:02 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/2.gif' is reachable
+14:46:02 CheckHttpRe 'http://139.59.162.138/tenebot/pats/2.gif' is reachable
+14:46:06 Command Han tenebi called !pat <@140197514958602240>
+14:46:06 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/8.jpg' is reachable
+14:46:06 CheckHttpRe Remote server returned 404, not found
+14:46:06 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/8.png' is reachable
+14:46:06 CheckHttpRe Remote server returned 404, not found
+14:46:06 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/8.gif' is reachable
+14:46:06 CheckHttpRe 'http://139.59.162.138/tenebot/pats/8.gif' is reachable
+14:46:16 Command Han Jovan called !pat <@181108473759662081>
+14:46:16 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/2.jpg' is reachable
+14:46:16 CheckHttpRe Remote server returned 404, not found
+14:46:16 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/2.png' is reachable
+14:46:16 CheckHttpRe Remote server returned 404, not found
+14:46:16 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/2.gif' is reachable
+14:46:16 CheckHttpRe 'http://139.59.162.138/tenebot/pats/2.gif' is reachable

@@ -15,13 +15,8 @@ namespace tenebot.Modules.Reactions
         [Command("ddlc")]
         public async Task Hmmm([Remainder]SocketGuildUser user = null)
         {
-            string imageUrl = @"dokis/";
-            string fullUrl = Settings.BaseHostUrl + imageUrl;
-
-            Random rnd = new Random();
-            int selected = rnd.Next(0, 10);
-
-            string fullImageUrl = fullUrl + selected.ToString() + ".jpg";
+            string folder = @"dokis/";
+            string fullImageUrl = ImageHandler.RandomImageUrl(folder, 10);
 
             EmbedBuilder embed = new EmbedBuilder();
             embed.WithImageUrl(fullImageUrl);

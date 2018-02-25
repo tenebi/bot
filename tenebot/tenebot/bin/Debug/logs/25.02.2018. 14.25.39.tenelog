@@ -1,0 +1,12 @@
+14:25:40 Settings    Loaded configuration.json successfully
+14:25:40 Discord     Discord.Net v1.0.2 (API v6)
+14:25:41 Gateway     Connecting
+14:25:42 Gateway     Connected
+14:25:42 Gateway     Ready
+14:25:44 Command Han Jovan called !pat <@254376091089764352>
+14:25:44 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/8.jpg' is reachable
+14:25:44 CheckHttpRe Web exception: The remote server returned an error: (404) Not Found.
+14:25:44 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/8.png' is reachable
+14:25:45 CheckHttpRe Web exception: The remote server returned an error: (404) Not Found.
+14:25:45 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/pats/8.gif' is reachable
+14:25:45 CheckHttpRe 'http://139.59.162.138/tenebot/pats/8.gif' is reachable

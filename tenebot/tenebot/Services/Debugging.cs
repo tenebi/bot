@@ -176,22 +176,33 @@ namespace tenebot.Services
             int x = 1 / zero;
         }
 
+        /// <summary>
+        /// Checks if an HTTP url is reachable.
+        /// </summary>
+        /// <param name="url">Website url</param>
+        /// <returns>If the host returns a success for the url.</returns>
         public static bool CheckHttpReachable(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Timeout = 1500;
+            request.Timeout = 1000;
             request.Method = "HEAD";
+
+            Log("CheckHttpReachable", $"Checking if '{url}' is reachable", LogSeverity.Debug);
 
             try
             {
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
+                    Log("CheckHttpReachable", $"'{url}' is reachable", LogSeverity.Debug);
                     return response.StatusCode == HttpStatusCode.OK;
                 }
             }
             catch (WebException e)
             {
-                Log("CheckHttpReachable", $"Web exception: {e.Message}", LogSeverity.Error);
+                if (e.Message.Contains("404"))
+                    Log("CheckHttpReachable", $"Remote server returned 404, not found", LogSeverity.Warning);
+                else
+                    Log("CheckHttpReachable", $"Web exception: {e.Message}", LogSeverity.Error);
                 return false;
             }
         }

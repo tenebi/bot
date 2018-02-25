@@ -1,0 +1,9 @@
+14:27:04 Settings    Loaded configuration.json successfully
+14:27:04 Discord     Discord.Net v1.0.2 (API v6)
+14:27:05 Gateway     Connecting
+14:27:06 Gateway     Connected
+14:27:06 Gateway     Ready
+14:27:10 Command Han tenebi called !scan
+14:27:10 Command Han Error with command !scan: Unknown command
+14:27:17 Command Han Jovan called !pat <@&412033571566649344>
+14:27:17 Command Han Error with command !pat <@&412033571566649344>: User not found

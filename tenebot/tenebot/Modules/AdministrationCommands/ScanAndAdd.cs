@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tenebot.Services;
-
+/*
 namespace tenebot.Modules.AdministrationCommands
 {
     public class ScanAndAdd : ModuleBase<SocketCommandContext>
@@ -76,4 +76,4 @@ using(SqlConnection connection = new SqlConnection("conn_string"))
             }         
         }
     }
-}
+}*/
