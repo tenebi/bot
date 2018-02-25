@@ -1,11 +1,7 @@
 ﻿using Discord.Commands;
-using tenebot;
 using tenebot.Services.AdministrationServices;
 using Discord;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using tenebot.Services;
 using System.Threading.Tasks;
 using Discord.WebSocket;
@@ -17,7 +13,7 @@ namespace tenebot.Modules.AdministrationCommands
         [Command("getstats")]
         public async Task getStats(SocketGuildUser user)
         {
-            bool isOwner = CheckIsOwner.check(Context.User);
+            bool isOwner = CheckIsOwner.Check(Context.User);
             SocketGuild server = Settings._client.GetGuild(Context.Guild.Id);
 
             EmbedBuilder statEmbed = new EmbedBuilder();
@@ -29,9 +25,7 @@ namespace tenebot.Modules.AdministrationCommands
                 .WithColor(Color.DarkGreen);
           
             if(!isOwner)
-            {
                 await ReplyAsync("", false, Embeds.notOwner.Build());
-            }
             else
             {
                 try

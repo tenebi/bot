@@ -8,6 +8,7 @@ namespace tenebot.Modules.Gambling
     public class Flip : ModuleBase<SocketCommandContext>
     {
         Random rand = new Random();
+
         [Command("flip")]
         public async Task FlipFunction()
         {

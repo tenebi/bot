@@ -18,7 +18,7 @@ namespace tenebot.Modules.AdministrationCommands
         [Command("scan")]
         public async Task Scan()
         {
-            bool isOwner = Services.AdministrationServices.CheckIsOwner.check(Context.User);
+            bool isOwner = CheckIsOwner.Check(Context.User);
             var Users = Context.Guild.Users;
 
             List<String> databaseUsers = new List<String>();
@@ -68,7 +68,6 @@ namespace tenebot.Modules.AdministrationCommands
                         connection.Close();
                     }
                     Debugging.Log("AddToDatabase", $"Added user {Username} to database with Id {userId}", Discord.LogSeverity.Info);
-
                 }
             }
             else

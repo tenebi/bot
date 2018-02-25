@@ -10,6 +10,7 @@ namespace tenebot.Modules.Gambling
         Random rand = new Random();
         string numbers = "";
         char[] num = new char[9]; 
+
         [Command("roll")]
         public async Task RollFunction()
         {

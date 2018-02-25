@@ -1,8 +1,5 @@
-﻿using Discord;
-using Discord.WebSocket;
-using System;
+﻿using Discord.WebSocket;
 using System.Threading.Tasks;
-using tenebot.Services;
 
 namespace tenebot.Services.AdministrationServices
 {
@@ -13,7 +10,7 @@ namespace tenebot.Services.AdministrationServices
         /// </summary>
         /// <param name="user">SocketGuildUser, use Context.User for this.</param>
         /// <returns>If the user is an owner.</returns>
-        public static bool check(SocketUser user)
+        public static bool Check(SocketUser user)
         {
             foreach (string ownerid in Settings.OwnerIds)
             {
@@ -25,12 +22,9 @@ namespace tenebot.Services.AdministrationServices
             return false;
         }
 
-        public static async Task notOwner(ISocketMessageChannel channel)
-        {
-            await channel.SendMessageAsync("", false, Embeds.notOwner.Build());
-        }
+        public static async Task NotOwner(ISocketMessageChannel channel) => await channel.SendMessageAsync("", false, Embeds.notOwner.Build());
 
-        public static async Task insufficientPermission(ISocketMessageChannel channel, string message)
+        public static async Task InsufficientPermission(ISocketMessageChannel channel, string message)
         {
             Embeds.notOwner.Description = message;
             await channel.SendMessageAsync("", false, Embeds.notOwner.Build());

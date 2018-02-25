@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace tenebot.Services
 {
@@ -17,7 +13,7 @@ namespace tenebot.Services
         /// <param name="max">Maximum random number result.</param>
         /// <param name="min">Minimum random number result.</param>
         /// <returns>Verified image url.</returns>
-        public static string RandomImageUrl(string folder, int max, int min = 0)
+        public static string RandomImageUrl(string folder, int max, int min = 1)
         {
             Random rnd = new Random();
             int selected = rnd.Next(min, max);
