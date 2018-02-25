@@ -37,7 +37,7 @@ namespace tenebot.Modules.AdministrationCommands
                 try
                 {
                     var AdminChannel = server.TextChannels.Where(c => c.Name == Settings.AdminChannel).FirstOrDefault();
-                    await AdminChannel.SendMessageAsync("hello");
+                    await AdminChannel.SendMessageAsync("",false, statEmbed.Build());
                 }
                 catch
                 {

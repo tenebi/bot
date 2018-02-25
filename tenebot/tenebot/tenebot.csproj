@@ -148,12 +148,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\AdministrationCommands\Purge.cs" />
+    <Compile Include="Modules\AdministrationCommands\ScanAndAdd.cs" />
     <Compile Include="Modules\Fun\Descramble.cs" />
     <Compile Include="Modules\Fun\Scramble.cs" />
     <Compile Include="Modules\Gambling\Choose.cs" />
     <Compile Include="Modules\AdministrationCommands\UserStats.cs" />
     <Compile Include="Modules\Games\rps.cs" />
     <Compile Include="Modules\Reactions\ddlc.cs" />
+    <Compile Include="Modules\Reactions\pat.cs" />
+    <Compile Include="Services\AddToDatabase.cs" />
     <Compile Include="Services\AdministrationServices\CheckIsOwner.cs" />
     <Compile Include="Modules\Gambling\Flip.cs" />
     <Compile Include="Modules\Gambling\roll.cs" />
