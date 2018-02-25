@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using tenebot.Services;
 
 namespace tenebot.Modules.Reactions
 {
@@ -14,13 +15,11 @@ namespace tenebot.Modules.Reactions
         [Command("ddlc")]
         public async Task Hmmm([Remainder]SocketGuildUser user = null)
         {
-            string imageBaseUrl = @"http://jovanzlatanovic.com/tenebot/dokis/";
-
-            Random rnd = new Random();
-            int selected = rnd.Next(0, 10);
+            string folder = @"dokis/";
+            string fullImageUrl = ImageHandler.RandomImageUrl(folder, 10);
 
             EmbedBuilder embed = new EmbedBuilder();
-            embed.WithImageUrl(imageBaseUrl + selected.ToString() + ".jpg");
+            embed.WithImageUrl(fullImageUrl);
             await ReplyAsync("", false, embed.Build());
         }
     }

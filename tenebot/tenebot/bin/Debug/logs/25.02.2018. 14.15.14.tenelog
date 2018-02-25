@@ -1,0 +1,13 @@
+14:15:15 Settings    Loaded configuration.json successfully
+14:15:15 Discord     Discord.Net v1.0.2 (API v6)
+14:15:15 Gateway     Connecting
+14:15:16 Gateway     Connected
+14:15:16 Gateway     Ready
+14:15:19 Command Han Jovan called !ddlc
+14:15:19 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/6.jpg' is reachable
+14:15:20 CheckHttpRe Web exception: The remote server returned an error: (404) Not Found.
+14:15:20 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/6.png' is reachable
+14:15:20 CheckHttpRe Web exception: The remote server returned an error: (404) Not Found.
+14:15:20 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/6.gif' is reachable
+14:15:20 CheckHttpRe Web exception: The remote server returned an error: (404) Not Found.
+14:15:20 RandomImage Failed to find image url

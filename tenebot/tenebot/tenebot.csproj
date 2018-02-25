@@ -170,6 +170,7 @@
     <Compile Include="Services\AdministrationServices\Embeds.cs" />
     <Compile Include="Services\Database.cs" />
     <Compile Include="Services\Debugging.cs" />
+    <Compile Include="Services\ImageHandler.cs" />
     <Compile Include="Services\Settings.cs" />
   </ItemGroup>
   <ItemGroup>

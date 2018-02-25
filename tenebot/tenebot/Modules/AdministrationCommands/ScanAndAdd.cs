@@ -8,7 +8,7 @@ using System.Text;
 using tenebot.Services.AdministrationServices;
 using System.Threading.Tasks;
 using tenebot.Services;
-
+/*
 namespace tenebot.Modules.AdministrationCommands
 {
     public class ScanAndAdd : ModuleBase<SocketCommandContext>
@@ -79,5 +79,9 @@ namespace tenebot.Modules.AdministrationCommands
         }
 
     }
+<<<<<<< HEAD
 }
 
+=======
+}*/
+>>>>>>> develop
