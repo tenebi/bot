@@ -91,7 +91,7 @@ namespace JsonGenerator
 
             while (true)
             {
-                Console.Write("  Property name:");
+                Console.Write("  Property name: ");
                 string input = Console.ReadLine();
 
                 if (!String.IsNullOrEmpty(input) && Char.IsLetter(input[0]))
@@ -155,7 +155,7 @@ namespace JsonGenerator
 
                 while(true)
                 {
-                    Console.Write($"  {property}:");
+                    Console.Write($"  {property}: ");
                     input = Console.ReadLine();
                     if (input == "")
                         break;

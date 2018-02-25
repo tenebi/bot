@@ -6,5 +6,6 @@
     "181108473759662081",
     "140197514958602240"
   ],
-  "AdminChannel": "administration"
+  "AdminChannel": "administration",
+  "BaseHostUrl": "http://139.59.162.138/tenebot/"
 }
