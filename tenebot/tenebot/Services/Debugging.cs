@@ -2,6 +2,7 @@
 using Discord;
 using System.IO;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace tenebot.Services
 {
@@ -173,6 +174,26 @@ namespace tenebot.Services
         {
             int zero = 0;
             int x = 1 / zero;
+        }
+
+        public static bool CheckHttpReachable(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Timeout = 1500;
+            request.Method = "HEAD";
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    return response.StatusCode == HttpStatusCode.OK;
+                }
+            }
+            catch (WebException e)
+            {
+                Log("CheckHttpReachable", $"Web exception: {e.Message}", LogSeverity.Error);
+                return false;
+            }
         }
     }
 }
