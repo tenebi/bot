@@ -4,25 +4,27 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using tenebot.Services.AdministrationServices;
 using System.Threading.Tasks;
 using tenebot.Services;
-/*
+
 namespace tenebot.Modules.AdministrationCommands
 {
     public class ScanAndAdd : ModuleBase<SocketCommandContext>
     {
         List<string> databaseUsers = new List<string>();
-        private static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TenebotDatabase.mdf;Integrated Security=False";
+        private static string ConnectionString = Database.ConnectionString;
+
         [Command("scan")]
         public async Task Scan()
         {
             bool isOwner = Services.AdministrationServices.CheckIsOwner.check(Context.User);
             var Users = Context.Guild.Users;
+
             List<String> databaseUsers = new List<String>();
             List<String> serverUsers = new List<String>();
             List<String> unlistedUsers = new List<String>();
+
             if (isOwner)
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -43,7 +45,6 @@ namespace tenebot.Modules.AdministrationCommands
                 }
 
                 Debugging.Log("AddToDatabase", $"Length of database {databaseUsers.Count}");
-
 
                 foreach (SocketGuildUser user in Users)
                 {
@@ -71,17 +72,7 @@ namespace tenebot.Modules.AdministrationCommands
                 }
             }
             else
-            {
                 await ReplyAsync("", false, Embeds.notOwner.Build());
-            }
-
-
         }
-
     }
-<<<<<<< HEAD
 }
-
-=======
-}*/
->>>>>>> develop
