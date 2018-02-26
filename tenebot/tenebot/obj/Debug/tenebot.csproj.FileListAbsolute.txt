@@ -104,7 +104,7 @@ D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csprojResolveAssemblyReference
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.csproj.CoreCompileInputs.cache
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.exe
 D:\Gits\tenebot\tenebot\tenebot\obj\Debug\tenebot.pdb
-D:\Gits\tenebot\tenebot\tenebot\bin\Debug\TenebotDatabase.mdf
-D:\Gits\tenebot\tenebot\tenebot\bin\Debug\TenebotDatabase_log.ldf
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\TenebotDatabase.mdf
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\TenebotDatabase_log.ldf
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\MySql.Data.dll
+D:\Gits\tenebot\tenebot\tenebot\bin\Debug\MySql.Data.xml

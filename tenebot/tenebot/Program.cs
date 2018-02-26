@@ -27,7 +27,9 @@ namespace tenebot
                 .AddSingleton(Settings._commands)
                 .BuildServiceProvider();
 
-            Settings.Load();
+            Settings.LoadJson();
+            Settings.SqlServerSetup();
+
             Embeds.InitializeAdminEmbeds();
 
             //subs
