@@ -1,0 +1,3 @@
+16:18:17 Settings    Loaded configuration.json successfully
+16:18:17 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+16:18:17 Discord     Discord.Net v1.0.2 (API v6)

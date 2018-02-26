@@ -166,7 +166,7 @@
     <Compile Include="Modules\Fun\Scramble.cs" />
     <Compile Include="Modules\Gambling\Choose.cs" />
     <Compile Include="Modules\AdministrationCommands\UserStats.cs" />
-    <Compile Include="Modules\Games\rps.cs" />
+    <Compile Include="Modules\Games\Rps.cs" />
     <Compile Include="Modules\Reactions\ddlc.cs" />
     <Compile Include="Modules\Reactions\pat.cs" />
     <Compile Include="Services\AddToDatabase.cs" />
@@ -183,6 +183,7 @@
     <Compile Include="Services\Database.cs" />
     <Compile Include="Services\Debugging.cs" />
     <Compile Include="Services\ImageHandler.cs" />
+    <Compile Include="Services\MessageHandler.cs" />
     <Compile Include="Services\Settings.cs" />
     <Compile Include="Services\SqlHandler.cs" />
   </ItemGroup>

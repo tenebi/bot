@@ -1,0 +1,6 @@
+16:18:34 Settings    Loaded configuration.json successfully
+16:18:34 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+16:18:34 Discord     Discord.Net v1.0.2 (API v6)
+16:18:35 Gateway     Connecting
+16:18:36 Gateway     Connected
+16:18:36 Gateway     Ready
