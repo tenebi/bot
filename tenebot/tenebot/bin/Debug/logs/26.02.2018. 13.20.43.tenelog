@@ -1,0 +1,9 @@
+13:20:44 Settings    Loaded configuration.json successfully
+13:20:44 SQL Server  Please enter login info
+13:20:59 SetConnecti New connection string set
+13:21:03 TestDatabas Error testing database: Unable to connect to any of the specified MySQL hosts.
+13:21:03 TestDatabas Some features which use a mysql database won't be available
+13:21:03 Discord     Discord.Net v1.0.2 (API v6)
+13:21:03 Gateway     Connecting
+13:21:04 Gateway     Connected
+13:21:05 Gateway     Ready

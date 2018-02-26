@@ -10,9 +10,60 @@ namespace tenebot.Modules.Utility
     [Group("rps")]
     public class Rps : ModuleBase<SocketCommandContext>
     {
+        private class RpsPlayers
+        {
+            private SocketUser firstPlayer;
+            private SocketUser secondPlayer;
+
+            public SocketUser SecondPlayer { get => secondPlayer; set => secondPlayer = value; }
+            public SocketUser FirstPlayer { get => firstPlayer; set => firstPlayer = value; }
+
+            public RpsPlayers()
+            {
+                firstPlayer = null;
+                secondPlayer = null;
+            }
+
+            public bool PlayersReady => firstPlayer != null && secondPlayer != null ? true : false;
+        }
+
+        private static System.Timers.Timer timer = new System.Timers.Timer();
+        private static RpsPlayers players = new RpsPlayers();
+
         private bool IsPrivateMessage(SocketMessage msg)
         {
             return (msg.Channel.GetType() == typeof(SocketDMChannel));
+        }
+
+        private void HandleTimer(object sender, ElapsedEventArgs e)
+        {
+            EmbedBuilder msg = new EmbedBuilder()
+                .WithTitle(":scissors: :newspaper: :gem: The brawl has timed out")
+                .WithColor(Color.Magenta);
+
+            //await ReplyAsync("", false, messages[0].Build());
+
+            timer.Stop();
+        }
+
+        private EmbedBuilder[] BuildMessages(SocketUser firstPlayer, SocketUser secondPlayer)
+        {
+            EmbedBuilder firstPlayerMessage = new EmbedBuilder();
+            firstPlayerMessage.WithTitle("RPS is on!")
+                .WithDescription($"You've started a rock paper scissors match with {secondPlayer}.")
+                .WithColor(Color.Blue);
+
+            EmbedBuilder secondPlayerMessage = new EmbedBuilder();
+            secondPlayerMessage.WithTitle("RPS is on!")
+                .WithDescription($"{Context.User.Mention} challanged you to rock paper scissors.\nWrite your selection or 'withdraw' to pussy out.")
+                .WithColor(Color.Red);
+
+            EmbedBuilder channelMessage = new EmbedBuilder()
+                .WithTitle(":scissors: :newspaper: :gem: A brawl is surely brewing.")
+                .WithDescription($"{firstPlayer.Mention} challanged {secondPlayer.Mention} to rock paper scissors!")
+                .WithColor(Color.Magenta);
+
+            return new EmbedBuilder[] { firstPlayerMessage, secondPlayerMessage, channelMessage };
         }
 
         [Command ("help")]
@@ -25,28 +76,22 @@ namespace tenebot.Modules.Utility
         }
 
         [Command]
-        public async Task Start(SocketUser targetuser)
+        public async Task Start(SocketUser secondPlayer)
         {
-            EmbedBuilder doneBuilder = new EmbedBuilder();
-            doneBuilder.WithTitle("RPS is on!")
-                .WithDescription($"You have started a good ol' round of rock paper scissors with {targetuser}, may the best man win! Please type your choice here.")
-                .WithColor(Color.Orange);
+            SocketUser firstPlayer = Context.User;
 
-            EmbedBuilder sendBuilder = new EmbedBuilder();
-            doneBuilder.WithTitle("RPS is on!")
-                .WithDescription($"{Context.User.Mention} has started a good ol' round of rock paper scissors with you, may the best man win! Please type your choice here.")
-                .WithColor(Color.Orange);
+            EmbedBuilder[] messages = BuildMessages(firstPlayer, secondPlayer);
 
-            SocketUser firstuser = Context.User;
-            string message0 = "";
-            string message1 = "Your request has been sent to " + targetuser + ", please type your choice here.";
-            string message2 = $"{Context.User} has invited you to a round of rock paper scissors, please type your choice here.";
+            await ReplyAsync("", false, messages[0].Build());
+            await UserExtensions.SendMessageAsync(firstPlayer, "", false, messages[1]);
+            await UserExtensions.SendMessageAsync(secondPlayer, "", false, messages[2]);
 
-            await UserExtensions.SendMessageAsync(firstuser, message0, false, sendBuilder);
-           
-            await UserExtensions.SendMessageAsync(targetuser, message0, false, sendBuilder);
-            
+            players.FirstPlayer = firstPlayer;
+            players.SecondPlayer = secondPlayer;
 
+            timer.Interval = 120000;
+            timer.Elapsed += new ElapsedEventHandler(HandleTimer);
+            timer.Start();
         }
     }
 }

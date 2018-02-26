@@ -1,0 +1,9 @@
+12:51:05 Settings    Loaded configuration.json successfully
+12:51:05 SQL Server  Please enter login info
+12:51:08 SetConnecti New connection string set and returned: datasource=nada;port=123;username=kappa;password=bappa;
+12:51:11 TestDatabas Error testing database: Unable to connect to any of the specified MySQL hosts.
+12:51:11 TestDatabas Some features which use a mysql database won't be available
+12:51:11 Discord     Discord.Net v1.0.2 (API v6)
+12:51:12 Gateway     Connecting
+12:51:12 Gateway     Connected
+12:51:13 Gateway     Ready
