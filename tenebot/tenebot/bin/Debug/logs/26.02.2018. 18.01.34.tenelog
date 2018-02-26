@@ -1,0 +1,8 @@
+18:01:35 Settings    Loaded configuration.json successfully
+18:01:35 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+18:01:35 Discord     Discord.Net v1.0.2 (API v6)
+18:01:36 Gateway     Connecting
+18:01:38 Gateway     Connected
+18:01:38 Gateway     Ready
+18:01:42 Command Han Jovan called !rps <@140197514958602240>
+18:01:48 Command Han Jovan sent rps withdraw

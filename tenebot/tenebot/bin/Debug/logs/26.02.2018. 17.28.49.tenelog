@@ -1,0 +1,9 @@
+17:28:49 Settings    Loaded configuration.json successfully
+17:28:49 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+17:28:49 Discord     Discord.Net v1.0.2 (API v6)
+17:28:50 Gateway     Connecting
+17:28:52 Gateway     Connected
+17:28:52 Gateway     Ready
+17:28:59 Command Han Jovan called !hmm
+17:29:03 Command Han Jovan called !hmm
+17:29:03 Command Han Error with command !hmm: Invalid context for command; accepted contexts: DM

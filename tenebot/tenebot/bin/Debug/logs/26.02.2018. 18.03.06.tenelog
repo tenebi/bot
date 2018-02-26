@@ -1,0 +1,8 @@
+18:03:07 Settings    Loaded configuration.json successfully
+18:03:07 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+18:03:07 Discord     Discord.Net v1.0.2 (API v6)
+18:03:08 Gateway     Connecting
+18:03:09 Gateway     Connected
+18:03:09 Gateway     Ready
+18:03:10 Command Han Jovan sent rps withdraw
+18:03:10 Rest        Preemptive Rate limit triggered: channels/417456723893420055/messages

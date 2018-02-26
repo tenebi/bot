@@ -15,6 +15,7 @@ namespace tenebot.Services
         public string BotToken { get; set; }
         public IList<string> OwnerIds { get; set; }
         public string AdminChannel { get; set; }
+        public bool EnableDatabase { get; set; }
         public string BaseHostUrl { get; set; }
         public string SqlServerUrl { get; set; }
         public string DatabaseName { get; set; }
@@ -31,6 +32,7 @@ namespace tenebot.Services
         private static string botToken;
         private static IList<string> ownerIds;
         private static string adminChannel;
+        private static bool enableDatabase;
         private static string baseHostUrl;
         private static string databaseName;
         private static string sqlServerUrl;
@@ -70,6 +72,10 @@ namespace tenebot.Services
         /// Name of the database.
         /// </summary>
         public static string DatabaseName { get => databaseName; set => databaseName = value; }
+        /// <summary>
+        /// Returns true or false depending on if the database is enabled in settings.
+        /// </summary>
+        public static bool EnableDatabase { get => enableDatabase; set => enableDatabase = value; }
 
         /// <summary>
         /// Loads the settings from a json file and stores it in the settings class variable.
@@ -87,7 +93,8 @@ namespace tenebot.Services
                 botToken = middleMan.BotToken;
                 ownerIds = middleMan.OwnerIds;
                 adminChannel = middleMan.AdminChannel;
-                BaseHostUrl = middleMan.BaseHostUrl;
+                enableDatabase = middleMan.EnableDatabase;
+                baseHostUrl = middleMan.BaseHostUrl;
                 sqlServerUrl = middleMan.SqlServerUrl;
                 databaseName = middleMan.DatabaseName;
 
@@ -107,6 +114,12 @@ namespace tenebot.Services
         /// <returns>Returns bool if it successful or not.</returns>
         public static bool SqlServerSetup()
         {
+            if (!enableDatabase)
+            {
+                Debugging.Log("SQL Server Setup", $"Database disabled in configuration. Some features which use a mysql database won't be available", Discord.LogSeverity.Warning);
+                return false;
+            }
+
             Debugging.Log("SQL Server Setup", "Please enter login info");
             string port = Debugging.Read("Port");
             string username = Debugging.Read("Username");
