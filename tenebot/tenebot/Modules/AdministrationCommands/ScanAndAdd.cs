@@ -7,6 +7,7 @@ using System.Linq;
 using tenebot.Services.AdministrationServices;
 using System.Threading.Tasks;
 using tenebot.Services;
+using Discord;
 
 namespace tenebot.Modules.AdministrationCommands
 {
@@ -20,6 +21,12 @@ namespace tenebot.Modules.AdministrationCommands
         {
             bool isOwner = CheckIsOwner.Check(Context.User);
             var Users = Context.Guild.Users;
+
+            EmbedBuilder scanned = new EmbedBuilder()
+                .WithColor(Color.LightOrange)
+                .WithTitle("Scanned server and added to database.");
+                
+
 
             List<String> databaseUsers = new List<String>();
             List<String> serverUsers = new List<String>();
@@ -68,7 +75,9 @@ namespace tenebot.Modules.AdministrationCommands
                         connection.Close();
                     }
                     Debugging.Log("AddToDatabase", $"Added user {Username} to database with Id {userId}", Discord.LogSeverity.Info);
+                    scanned.AddField($"Added user {Username} to database with ID {userId}", "\n");
                 }
+                await ReplyAsync("", false, scanned.Build());
             }
             else
                 await ReplyAsync("", false, Embeds.notOwner.Build());
