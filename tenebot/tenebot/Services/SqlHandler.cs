@@ -5,14 +5,11 @@ using tenebot.Services;
 
 namespace tenebot
 {
-    class SqlHandler
+    public static class SqlHandler
     {
-        /// <summary>
-        /// Database connection string.
-        /// </summary>
-        public static string ConnectionString;
+        private static string connectionString;
 
-        private static MySqlConnection DatabaseConnection = new MySqlConnection(ConnectionString);
+        private static MySqlConnection DatabaseConnection = new MySqlConnection(connectionString);
         private static List<string> FieldNames = new List<string>();
         private static List<string> FieldTypes = new List<string>();
 
@@ -22,7 +19,7 @@ namespace tenebot
         /// Tests the database.
         /// </summary>
         /// <returns>Returns true if it test is successful.</returns>
-        public bool TestDatabase()
+        public static bool TestDatabase()
         {
             try
             {
@@ -43,9 +40,22 @@ namespace tenebot
             }
             catch (Exception e)
             {
-                Debugging.Log("TestDatabase", $"Error testing database: {e.Message}");
+                Debugging.Log("TestDatabase", $"Error testing database: {e.Message}", Discord.LogSeverity.Critical);
+                Debugging.Log("TestDatabase", $"Some features which use a mysql database won't be available", Discord.LogSeverity.Warning);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Returns the connection string.
+        /// </summary>
+        /// <returns>Connection string.</returns>
+        public static string GetConnectionString()
+        {
+            if (string.IsNullOrEmpty(connectionString))
+                throw new Exception("Connection string needs to be set first.");
+
+            return connectionString;
         }
 
         /// <summary>
@@ -56,14 +66,23 @@ namespace tenebot
         /// <param name="username">Login username.</param>
         /// <param name="password">Login password.</param>
         /// <returns>New connection string.</returns>
-        public string SetConnectionString(string url, string port, string username, string password)
+        public static string SetConnectionString(string url, string port, string username, string password)
         {
-            ConnectionString = $"datasource={url};port={port};username={username};password={password};";
-            Debugging.Log("SetConnectionString", $"New connection string set and returned: {ConnectionString}");
-            return ConnectionString;
+            connectionString = $"datasource={url};port={port};username={username};password={password};";
+            Debugging.Log("SetConnectionString", $"New connection string set");
+            return connectionString;
         }
 
-        public List<string> Select(string tableName, string select, string where, string databaseName = null)
+                        //tom pls write description of how your function works and what the arguments are, also can you make the variables more descriptive /beg
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="select"></param>
+        /// <param name="where"></param>
+        /// <param name="databaseName"></param>
+        /// <returns></returns>
+        public static List<string> Select(string tableName, string select, string where, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
 
@@ -140,7 +159,7 @@ namespace tenebot
         /// <param name="tableName">Table from which to delete.</param>
         /// <param name="condition">Conditions for deletion.</param>
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
-        public void Delete(string tableName, string condition, string databaseName = null)
+        public static void Delete(string tableName, string condition, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
 
@@ -167,7 +186,7 @@ namespace tenebot
         /// <param name="tableName">Table from which to delete.</param>
         /// <param name="values">Values to be insterted.</param>
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
-        public void Insert(string tablename, string values, string databaseName = null)
+        public static void Insert(string tablename, string values, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
 
@@ -195,7 +214,7 @@ namespace tenebot
         /// <param name="values">Values to be insterted.</param>
         /// <param name="where">Selecting which rows to be affected.</param>
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
-        public void Update(string tableName, string values, string where, string databaseName = null)
+        public static void Update(string tableName, string values, string where, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
 

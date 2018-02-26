@@ -111,12 +111,13 @@ namespace tenebot.Services
             string port = Debugging.Read("Port");
             string username = Debugging.Read("Username");
             string password = Debugging.Read("Password");
-
-            // test connection here
-
-            SqlHandler.ConnectionString = $"datasource={sqlServerUrl};port={port};username={username};password={password};";
-
             Console.Clear();
+
+            SqlHandler.SetConnectionString(sqlServerUrl, port, username, password);
+
+            if (!SqlHandler.TestDatabase())
+                return false;
+
             return true;
         }
     }
