@@ -31,7 +31,7 @@ namespace tenebot
 
                 while (reader.Read())
                 {
-                    Debugging.Log("Database Test", reader.GetInt32("id") + " " + reader.GetString("name"));
+                    //Debugging.Log("Database Test", reader.GetInt32("id") + " " + reader.GetString("name"));
                 }
 
                 DatabaseConnection.Close();
@@ -73,16 +73,17 @@ namespace tenebot
             return connectionString;
         }
 
-                        //tom pls write description of how your function works and what the arguments are, also can you make the variables more descriptive /beg
+        //tom pls write description of how your function works and what the arguments are, also can you make the variables more descriptive /beg
         /// <summary>
-        /// 
+        /// Selects and returns a list of rows from the database selected table with selected columns and conditions.
         /// </summary>
-        /// <param name="tableName"></param>
-        /// <param name="select"></param>
-        /// <param name="where"></param>
-        /// <param name="databaseName"></param>
-        /// <returns></returns>
-        public static List<string> Select(string tableName, string select, string where, string databaseName = null)
+        /// <param name="tableName">The table name from which to select.</param>
+        /// <param name="selectQuery">The SQL query of what columns to select.</param>
+        /// <param name="condition">The SQL WHERE query of what rows to select.</param>
+        /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
+        /// <returns>A list of selected row strings with columns seperated by a comma (,).</returns>
+        /// <example>Select("Users", "Username, Pats", "UserId = 1");</example>
+        public static List<string> Select(string tableName, string selectQuery, string condition, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
 
@@ -115,9 +116,9 @@ namespace tenebot
             }
             reader.Close();
 
-            if (where == "")
+            if (condition == "")
             {
-                MySqlCommand cmd = new MySqlCommand("SELECT " + select.ToString() + " FROM " + databaseName.ToString() + "." + tableName.ToString() + ";", DatabaseConnection);
+                MySqlCommand cmd = new MySqlCommand("SELECT " + selectQuery.ToString() + " FROM " + databaseName.ToString() + "." + tableName.ToString() + ";", DatabaseConnection);
                 reader1 = cmd.ExecuteReader();
 
                 while (reader1.Read())
@@ -134,7 +135,7 @@ namespace tenebot
             }
             else
             {
-                MySqlCommand cmd = new MySqlCommand("SELECT " + select.ToString() + " FROM " + databaseName.ToString() + "." + tableName.ToString() + " WHERE " + where.ToString() + ";", DatabaseConnection);
+                MySqlCommand cmd = new MySqlCommand("SELECT " + selectQuery.ToString() + " FROM " + databaseName.ToString() + "." + tableName.ToString() + " WHERE " + condition.ToString() + ";", DatabaseConnection);
                 
                 reader1 = cmd.ExecuteReader();
                 while (reader1.Read())
