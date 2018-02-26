@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.Linq;
 using tenebot.Services;
 
 namespace tenebot
@@ -10,28 +11,26 @@ namespace tenebot
         private static string connectionString;
 
         private static MySqlConnection DatabaseConnection = new MySqlConnection(connectionString);
-        private static List<string> FieldNames = new List<string>();
-        private static List<string> FieldTypes = new List<string>();
-
-        private static int numberOfFields = 0;
 
         /// <summary>
-        /// Tests the database.
+        /// Attempts to connect to a MySql server based on connection settings either preloaded or passed directly via SetConnectionSTring().
+        /// WIP WIP WIP WIP WIP WIP AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         /// </summary>
-        /// <returns>Returns true if it test is successful.</returns>
+        /// <returns>Returns true if test is successful.</returns>
         public static bool TestDatabase()
         {
             try
             {
-                MySqlCommand check = new MySqlCommand("SELECT * FROM dbname.users", DatabaseConnection);
+                DatabaseConnection.Open();
+                MySqlCommand clmn = new MySqlCommand("", DatabaseConnection);
                 MySqlDataReader reader;
 
-                DatabaseConnection.Open();
-                reader = check.ExecuteReader();
+                reader = clmn.ExecuteReader();
+
 
                 while (reader.Read())
                 {
-                    //Debugging.Log("Database Test", reader.GetInt32("id") + " " + reader.GetString("name"));
+                    Debugging.Log("Database Test", reader.GetInt32("id") + " " + reader.GetString("name"));
                 }
 
                 DatabaseConnection.Close();
@@ -44,6 +43,97 @@ namespace tenebot
                 Debugging.Log("TestDatabase", $"Some features which use a mysql database won't be available", Discord.LogSeverity.Warning);
                 return false;
             }
+        }
+
+
+        /// <summary>
+        /// Attempts fech all field names in a given database and table.
+        /// Used for internal functions, may be used for getting field names.
+        /// </summary>
+        /// <param name="databaseName">Selected database.</param>
+        /// <param name="tableName">Selected table.</param>
+        /// <returns>Returns a string list containing all field names.</returns>
+        public static List<string> GetDataBaseFields(string databaseName, string tableName)
+        {
+
+
+            DatabaseConnection.Open();
+            MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
+            MySqlDataReader reader;
+            string name;
+            List<string> FieldNames = new List<string>();
+
+            reader = clmn.ExecuteReader();
+
+            while (reader.Read())
+            {
+                name = reader.GetString("Field");
+                FieldNames.Add(name);
+            }
+            reader.Close();
+
+            return FieldNames;
+        }
+
+
+        /// <summary>
+        /// Attempts fech total count of fields withing a given database and table.
+        /// Used for internal functions, may be used for getting field names.
+        /// </summary>
+        /// <param name="databaseName">Selected database.</param>
+        /// <param name="tableName">Selected table.</param>
+        /// <returns>Returns an int containing total count of fields.</returns>
+        public static int GetDataBaseFieldCount(string databaseName, string tableName)
+        {
+
+
+            DatabaseConnection.Open();
+            MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
+            MySqlDataReader reader;
+            string name;
+            int count = 0;
+            List<string> FieldNames = new List<string>();
+
+            reader = clmn.ExecuteReader();
+
+            while (reader.Read())
+            {
+                name = reader.GetString("Field");
+                count++;
+            }
+            reader.Close();
+
+            return count;
+        }
+
+        /// <summary>
+        /// Attempts fech all field datatypes in a given database and table.
+        /// Used for internal functions, may be used for getting field datatypes manually.
+        /// </summary>
+        /// <param name="databaseName">Selected database.</param>
+        /// <param name="tableName">Selected table.</param>
+        /// <returns>Returns a string list containing all field datatypes.</returns>
+        /// 
+        public static List<string> GetDataBaseFieldTypes(string databaseName, string tableName)
+        {
+
+
+            DatabaseConnection.Open();
+            MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
+            MySqlDataReader reader;
+            string type;
+            List<string> FieldTypes = new List<string>();
+
+            reader = clmn.ExecuteReader();
+
+            while (reader.Read())
+            {
+                type = reader.GetString("Type");
+                FieldTypes.Add(type);
+            }
+            reader.Close();
+
+            return FieldTypes;
         }
 
         /// <summary>
@@ -74,8 +164,11 @@ namespace tenebot
         }
 
         //tom pls write description of how your function works and what the arguments are, also can you make the variables more descriptive /beg
+        //did
         /// <summary>
-        /// Selects and returns a list of rows from the database selected table with selected columns and conditions.
+        /// Standard SQL select query. Returns a list of strings containing data from input database and table.
+        /// Selects based on an input selectQuery, which denominates which elements to select (such as 'id')
+        /// Selects based on an input whereQuery(condition), which sets a baseline rule for selection (such as 'where id = 1')
         /// </summary>
         /// <param name="tableName">The table name from which to select.</param>
         /// <param name="selectQuery">The SQL query of what columns to select.</param>
@@ -89,45 +182,63 @@ namespace tenebot
 
             MySqlDataReader reader;
             MySqlDataReader reader1;
-            
-            List<string> memes = new List<string>();
 
             string tarpmeme;
             string querystring;
-            string name;
             string tarp = "";
-            string type;
+            int queryNumber = 0;
+            int numberOfFieldslocal;
 
+            List<string> FieldNameslocal = new List<string>();
             List<string> returno = new List<string>();
+            List<string> tarplist = new List<string>();
+
+            FieldNameslocal = GetDataBaseFields(databaseName, tableName);
+            numberOfFieldslocal = GetDataBaseFieldCount(databaseName, tableName);
 
             DatabaseConnection.Open();
-            MySqlCommand clmnname = new MySqlCommand("SELECT column_name from information_schema.columns where table_schema = '" + databaseName.ToString() + "' and table_name = '" + tableName.ToString() + "';", DatabaseConnection);
-            MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM "+ databaseName +"."+ tableName +";", DatabaseConnection);
+            MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
 
-            reader = clmn.ExecuteReader();
+            
 
-            while (reader.Read())
+            if (selectQuery != "*")
             {
-                name = reader.GetString("Field");
-                FieldNames.Add(name);
-                type = reader.GetString("Type");
-                FieldTypes.Add(type);
-                numberOfFields++;
+                tarplist = selectQuery.Split(',').ToList();
+                foreach (string s in tarplist)
+                {
+                    queryNumber++;
+                }
+
             }
-            reader.Close();
+
+            else
+            {
+                tarplist = FieldNameslocal;
+                queryNumber = numberOfFieldslocal;
+            }
 
             if (condition == "")
             {
-                MySqlCommand cmd = new MySqlCommand("SELECT " + selectQuery.ToString() + " FROM " + databaseName.ToString() + "." + tableName.ToString() + ";", DatabaseConnection);
+                MySqlCommand cmd = new MySqlCommand($"SELECT {selectQuery} FROM {databaseName}.{tableName};", DatabaseConnection);
                 reader1 = cmd.ExecuteReader();
 
                 while (reader1.Read())
                 {
-                    for (int f = 0; f < numberOfFields; f++)
+                    for (int f = 0; f < queryNumber; f++)
                     {
-                        querystring ="'" + FieldNames[f] + "'";
-                        tarpmeme = reader1.GetString(FieldNames[f].ToString());
-                        tarp += tarpmeme + ",";
+                        if (f == queryNumber - 1)
+                        {
+                            querystring = "'" + tarplist[f] + "'";
+                            tarpmeme = reader1.GetString(tarplist[f].ToString());
+                            tarp += tarpmeme;
+
+                        }
+                        else
+                        {
+                            querystring = "'" + tarplist[f] + "'";
+                            tarpmeme = reader1.GetString(tarplist[f].ToString());
+                            tarp += tarpmeme + ",";
+                        }
                     }
                     returno.Add(tarp);
                     tarp = "";
@@ -135,16 +246,26 @@ namespace tenebot
             }
             else
             {
-                MySqlCommand cmd = new MySqlCommand("SELECT " + selectQuery.ToString() + " FROM " + databaseName.ToString() + "." + tableName.ToString() + " WHERE " + condition.ToString() + ";", DatabaseConnection);
-                
+                MySqlCommand cmd = new MySqlCommand($"SELECT {selectQuery} FROM {databaseName}.{tableName} WHERE {condition};", DatabaseConnection);
+
                 reader1 = cmd.ExecuteReader();
                 while (reader1.Read())
                 {
-                    for (int f = 0; f < numberOfFields; f++)
+                    for (int f = 0; f < queryNumber; f++)
                     {
-                        querystring = "'" + FieldNames[f] + "'";
-                        tarpmeme = reader1.GetString(FieldNames[f].ToString());
-                        tarp += tarpmeme + ",";
+                        if (f == queryNumber - 1)
+                        {
+                            querystring = "'" + tarplist[f] + "'";
+                            tarpmeme = reader1.GetString(tarplist[f].ToString());
+                            tarp += tarpmeme;
+
+                        }
+                        else
+                        {
+                            querystring = "'" + tarplist[f] + "'";
+                            tarpmeme = reader1.GetString(tarplist[f].ToString());
+                            tarp += tarpmeme + ",";
+                        }
                     }
                     returno.Add(tarp);
                     tarp = "";
@@ -155,11 +276,11 @@ namespace tenebot
         }
 
         /// <summary>
-        /// Deletes values from the database.
+        /// Deletes a row from selected database and table.
         /// </summary>
         /// <param name="tableName">Table from which to delete.</param>
         /// <param name="condition">Conditions for deletion.</param>
-        /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
+        /// <param name="databaseName">Optional name for the database (disregard the null, it's set)(AAAAAAAAAAAAAAAAAAA t. Tom).</param>
         public static void Delete(string tableName, string condition, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
@@ -182,7 +303,7 @@ namespace tenebot
         }
 
         /// <summary>
-        /// Insert a row into the database.
+        /// Inserst a row into the selected database and table.
         /// </summary>
         /// <param name="tableName">Table from which to delete.</param>
         /// <param name="values">Values to be insterted.</param>
@@ -209,7 +330,7 @@ namespace tenebot
         }
 
         /// <summary>
-        /// Updates a row in the database.
+        /// Updates a row in the selected database and table.
         /// </summary>
         /// <param name="tableName">Table from which to delete.</param>
         /// <param name="values">Values to be insterted.</param>
@@ -218,21 +339,26 @@ namespace tenebot
         public static void Update(string tableName, string values, string where, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
-
+            List<string> FieldNameslocal = new List<string>();
             MySqlDataReader reader;
             DatabaseConnection.Open();
+
+            int numberOfFieldslocal;
             string set = "";
             int f = 1;
 
-            string[] zodmas = new string[numberOfFields-1];
+            FieldNameslocal = GetDataBaseFields(databaseName, tableName);
+            numberOfFieldslocal = GetDataBaseFieldCount(databaseName, tableName);
+
+            string[] zodmas = new string[numberOfFieldslocal-1];
             char[] skirt = new char[2] {',', ' ' };
 
             zodmas = values.Split(skirt);
 
-            for(int i = 0; i < numberOfFields-1; i++)
+            for(int i = 0; i < numberOfFieldslocal-1; i++)
             {
-                set += FieldNames[f].ToString() + "=";
-                if (i != numberOfFields-2)
+                set += FieldNameslocal[f].ToString() + "=";
+                if (i != numberOfFieldslocal-2)
                 {
                     set += zodmas[i] + ",";
                 }
