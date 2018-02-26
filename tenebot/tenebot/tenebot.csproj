@@ -159,6 +159,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\AdministrationCommands\ModifyBot.cs" />
     <Compile Include="Modules\AdministrationCommands\Purge.cs" />
     <Compile Include="Modules\AdministrationCommands\ScanAndAdd.cs" />
     <Compile Include="Modules\Fun\Descramble.cs" />
