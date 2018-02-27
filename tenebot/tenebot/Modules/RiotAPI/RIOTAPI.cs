@@ -18,11 +18,15 @@ namespace tenebot.Modules.RiotAPI
         /// <summary>
         /// API Key, taken from configuration.json
         /// </summary>
-        public static RiotApi api = RiotApi.GetDevelopmentInstance("RGAPI-dd771ff5-5492-407b-b4d5-214937e6ccb0");
+        public static RiotApi api = RiotApi.GetDevelopmentInstance("RGAPI-56c5951e-d246-4440-91fe-88e23252b47e");
         /// <summary>
         /// Static API, for champion names. Taken from configuration.json.
         /// </summary>
-        public static StaticRiotApi staticapi = StaticRiotApi.GetInstance("RGAPI-dd771ff5-5492-407b-b4d5-214937e6ccb0");
+        public static StaticRiotApi staticapi = StaticRiotApi.GetInstance("RGAPI-56c5951e-d246-4440-91fe-88e23252b47e");
+
+        public static string currentVersion = staticapi.GetVersions(RiotSharp.Misc.Region.euw).First();
+        
+        
 
 
     }

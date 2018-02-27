@@ -1,0 +1,9 @@
+17:09:26 Settings    Loaded configuration.json successfully
+17:09:26 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+17:09:26 Discord     Discord.Net v1.0.2 (API v6)
+17:09:27 Gateway     Connecting
+17:09:28 Gateway     Connected
+17:09:28 Gateway     Ready
+17:09:51 Command Han tenebi called !getstats euw tenebi
+17:09:51 Command Han Error with command !getstats euw tenebi: User not found
+17:09:57 Command Han tenebi called !lolstats euw tenebi

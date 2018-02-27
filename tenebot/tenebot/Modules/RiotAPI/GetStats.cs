@@ -14,6 +14,7 @@ namespace tenebot.Modules.RiotAPI
     public class GetStats : ModuleBase<SocketCommandContext>
     {
         Region Region = new Region();
+        
         EmbedBuilder helpEmbed = new EmbedBuilder()
             .WithTitle("Hmm, that region doesn't seem to exist!")
             .WithColor(Color.DarkRed)
@@ -29,7 +30,7 @@ namespace tenebot.Modules.RiotAPI
         [Command("lolstats")]
         public async Task getStats(string region, [Remainder] string summonerName)
         {
-            switch(region.ToUpper())
+            switch (region.ToUpper())
             {
                 case ("EUW"):
                     Region = Region.euw;
@@ -67,9 +68,8 @@ namespace tenebot.Modules.RiotAPI
                 default:
                     await ReplyAsync("", false, helpEmbed.Build());
                     break;
-                
-                
             }
+           
 
 
             try
@@ -89,7 +89,7 @@ namespace tenebot.Modules.RiotAPI
 
                 statEmbed.WithTitle($"{summoner.Name}'s LoL statistics")
                     .AddInlineField("Total mastery score:", RIOTAPI.api.GetTotalChampionMasteryScore(Region, summoner.Id))
-                    .WithThumbnailUrl("http://ddragon.leagueoflegends.com/cdn/8.4.1/img/profileicon/" + summoner.ProfileIconId + ".png");
+                    .WithThumbnailUrl("http://ddragon.leagueoflegends.com/cdn/"+ RIOTAPI.currentVersion +"/img/profileicon/" + summoner.ProfileIconId + ".png");
 
 
 
