@@ -80,6 +80,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RiotSharp, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RiotSharp.3.0.1\lib\netstandard1.3\RiotSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
@@ -169,6 +172,8 @@
     <Compile Include="Modules\Games\Rps.cs" />
     <Compile Include="Modules\Reactions\ddlc.cs" />
     <Compile Include="Modules\Reactions\pat.cs" />
+    <Compile Include="Modules\RiotAPI\GetStats.cs" />
+    <Compile Include="Modules\RiotAPI\RIOTAPI.cs" />
     <Compile Include="Services\AddToDatabase.cs" />
     <Compile Include="Services\AdministrationServices\CheckIsOwner.cs" />
     <Compile Include="Modules\Gambling\Flip.cs" />

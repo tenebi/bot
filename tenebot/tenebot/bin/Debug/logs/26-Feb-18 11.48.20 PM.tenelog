@@ -1,0 +1,27 @@
+23:48:21 Settings    Loaded configuration.json successfully
+23:48:21 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+23:48:21 Discord     Discord.Net v1.0.2 (API v6)
+23:48:22 Gateway     Connecting
+23:48:22 Gateway     Connected
+23:48:23 Gateway     Ready
+23:48:32 Command Han tenebi called !lolstats euw tenebi
+23:48:32 Command     Discord.Commands.CommandException: Error occurred executing "lolstats" for tenebi#4551 in space hunters/tenebot. ---> System.TypeInitializationException: The type initializer for 'tenebot.Modules.RiotAPI.RIOTAPI' threw an exception. ---> System.NotSupportedException: The given path's format is not supported.
+   at System.Security.Permissions.FileIOPermission.EmulateFileIOPermissionChecks(String fullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding, Boolean checkHost)
+   at System.IO.File.ReadAllText(String path)
+   at tenebot.Modules.RiotAPI.RIOTAPI..cctor() in C:\Users\cPC\Desktop\bot\tenebot\tenebot\Modules\RiotAPI\RIOTAPI.cs:line 26
+   --- End of inner exception stack trace ---
+   at tenebot.Modules.RiotAPI.GetStats.<getStats>d__4.MoveNext() in C:\Users\cPC\Desktop\bot\tenebot\tenebot\Modules\RiotAPI\GetStats.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+23:48:32 Command Han Error with command !lolstats euw tenebi: The type initializer for 'tenebotModulesRiotAPIRIOTAPI' threw an exception

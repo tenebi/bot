@@ -1,0 +1,11 @@
+00:05:37 Settings    Loaded configuration.json successfully
+00:05:37 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:05:37 Discord     Discord.Net v1.0.2 (API v6)
+00:05:38 Gateway     Connecting
+00:05:42 Gateway     Failed to resume previous session
+00:05:42 Gateway     Connected
+00:05:43 Gateway     Ready
+00:05:43 Command Han Jovan called !rps <@181108473759662081>
+00:05:51 Command Han Jovan sent !rps rock
+00:06:01 Command Han tenebi sent rps scissors
+00:06:10 Command Han tenebi called !lolstats euw tenebi
