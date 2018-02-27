@@ -8,41 +8,45 @@ namespace tenebot
 {
     public static class SqlHandler
     {
+        //private static string connectionString = "datasource=localhost;port=3306;username=root;password=password;";
         private static string connectionString;
-
         private static MySqlConnection DatabaseConnection = new MySqlConnection(connectionString);
 
         /// <summary>
         /// Attempts to connect to a MySql server based on connection settings either preloaded or passed directly via SetConnectionSTring().
-        /// WIP WIP WIP WIP WIP WIP AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        /// Attempts to retrieve all table names from a specified database (currently database is loaded from a json file).
         /// </summary>
         /// <returns>Returns true if test is successful.</returns>
         public static bool TestDatabase()
         {
+            string dbname = Settings.DatabaseName;
+
             try
             {
                 DatabaseConnection.Open();
-                MySqlCommand clmn = new MySqlCommand("", DatabaseConnection);
-                MySqlDataReader reader;
+                MySqlCommand test = new MySqlCommand($"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA='dbname';", DatabaseConnection);
+                MySqlDataReader readerlocal1;
 
-                reader = clmn.ExecuteReader();
+                readerlocal1 = test.ExecuteReader();
 
 
-                while (reader.Read())
+                while (readerlocal1.Read())
                 {
-                    Debugging.Log("Database Test", reader.GetInt32("id") + " " + reader.GetString("name"));
+                    Debugging.Log("Database Test", reader.GetString("TABLE_NAME"));
                 }
-
                 DatabaseConnection.Close();
+
 
                 return true;
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
                 Debugging.Log("TestDatabase", $"Error testing database: {e.Message}", Discord.LogSeverity.Critical);
                 Debugging.Log("TestDatabase", $"Some features which use a mysql database won't be available", Discord.LogSeverity.Warning);
                 return false;
             }
+            
         }
 
 
@@ -56,22 +60,22 @@ namespace tenebot
         public static List<string> GetDataBaseFields(string databaseName, string tableName)
         {
 
-
+            DatabaseConnection.Close();
             DatabaseConnection.Open();
             MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
-            MySqlDataReader reader;
+            MySqlDataReader readerlocal2;
             string name;
             List<string> FieldNames = new List<string>();
 
-            reader = clmn.ExecuteReader();
+            readerlocal2 = clmn.ExecuteReader();
 
-            while (reader.Read())
+            while (readerlocal2.Read())
             {
-                name = reader.GetString("Field");
+                name = readerlocal2.GetString("Field");
                 FieldNames.Add(name);
             }
-            reader.Close();
-
+            readerlocal2.Close();
+            DatabaseConnection.Close();
             return FieldNames;
         }
 
@@ -159,6 +163,7 @@ namespace tenebot
         public static string SetConnectionString(string url, string port, string username, string password)
         {
             connectionString = $"datasource={url};port={port};username={username};password={password};";
+            DatabaseConnection = new MySqlConnection(connectionString);
             Debugging.Log("SetConnectionString", $"New connection string set");
             return connectionString;
         }
@@ -176,7 +181,7 @@ namespace tenebot
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
         /// <returns>A list of selected row strings with columns seperated by a comma (,).</returns>
         /// <example>Select("Users", "Username, Pats", "UserId = 1");</example>
-        public static List<string> Select(string tableName, string selectQuery, string condition, string databaseName = null)
+        public static List<string> Select(string tableName, string selectQuery, string condition, string databaseName)
         {
             databaseName = Settings.DatabaseName;
 
@@ -196,8 +201,9 @@ namespace tenebot
             FieldNameslocal = GetDataBaseFields(databaseName, tableName);
             numberOfFieldslocal = GetDataBaseFieldCount(databaseName, tableName);
 
+            DatabaseConnection.Close();
             DatabaseConnection.Open();
-            MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
+            //MySqlCommand clmn = new MySqlCommand($"SHOW FIELDS FROM {databaseName}.{tableName};", DatabaseConnection);
 
             
 
@@ -283,7 +289,7 @@ namespace tenebot
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set)(AAAAAAAAAAAAAAAAAAA t. Tom).</param>
         public static void Delete(string tableName, string condition, string databaseName = null)
         {
-            databaseName = Settings.DatabaseName;
+            //databaseName = Settings.DatabaseName;
 
             MySqlDataReader reader;
             DatabaseConnection.Open();
@@ -308,13 +314,13 @@ namespace tenebot
         /// <param name="tableName">Table from which to delete.</param>
         /// <param name="values">Values to be insterted.</param>
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
-        public static void Insert(string tablename, string values, string databaseName = null)
+        public static void Insert(string databaseName, string tablename, string values)
         {
             databaseName = Settings.DatabaseName;
 
             MySqlDataReader reader;
             DatabaseConnection.Open();
-            MySqlCommand cmd = new MySqlCommand("Insert Into " + databaseName + "." + tablename + " Values (" + values.ToString() + ");", DatabaseConnection);
+            MySqlCommand cmd = new MySqlCommand($"Insert Into {databaseName}.{tablename} Values ({values});", DatabaseConnection);
 
             try
             {
@@ -323,6 +329,7 @@ namespace tenebot
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 Debugging.Log("SQL Insert", $"Error inserting records: {e.Message}", Discord.LogSeverity.Error);
             }
 
@@ -338,7 +345,7 @@ namespace tenebot
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
         public static void Update(string tableName, string values, string where, string databaseName = null)
         {
-            databaseName = Settings.DatabaseName;
+            //databaseName = Settings.DatabaseName;
             List<string> FieldNameslocal = new List<string>();
             MySqlDataReader reader;
             DatabaseConnection.Open();
