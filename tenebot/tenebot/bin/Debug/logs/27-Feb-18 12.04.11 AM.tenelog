@@ -1,0 +1,31 @@
+00:04:11 Settings    Loaded configuration.json successfully
+00:04:11 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:04:11 Discord     Discord.Net v1.0.2 (API v6)
+00:04:12 Gateway     Connecting
+00:04:13 Gateway     Connected
+00:04:13 Gateway     Ready
+00:04:17 Command Han tenebi called !lolstats euw tenebi
+00:04:17 Command     Discord.Commands.CommandException: Error occurred executing "lolstats" for tenebi#4551 in space hunters/tenebot. ---> System.InvalidOperationException: An invalid request URI was provided. The request URI must either be an absolute URI or BaseAddress must be set.
+   at System.Net.Http.HttpClient.PrepareRequestMessage(HttpRequestMessage request)
+   at System.Net.Http.HttpClient.SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetAsync(Uri requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsync(Uri requestUri)
+   at System.Net.Http.HttpClient.GetStringAsync(String requestUri)
+   at tenebot.Modules.RiotAPI.RIOTAPI.<getCurrentVersion>d__4.MoveNext() in C:\Users\cPC\Desktop\bot\tenebot\tenebot\Modules\RiotAPI\RIOTAPI.cs:line 38
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at tenebot.Modules.RiotAPI.GetStats.<getStats>d__4.MoveNext() in C:\Users\cPC\Desktop\bot\tenebot\tenebot\Modules\RiotAPI\GetStats.cs:line 32
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+00:04:17 Command Han Error with command !lolstats euw tenebi: An invalid request URI was provided The request URI must either be an absolute URI or BaseAddress must be set
+00:04:50 Command Han Jovan called !rps <@181108473759662081>
+00:04:58 Command Han tenebi sent rps scissors
