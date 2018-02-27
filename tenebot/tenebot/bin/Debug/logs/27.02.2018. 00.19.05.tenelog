@@ -1,0 +1,19 @@
+00:19:06 Settings    Loaded configuration.json successfully
+00:19:06 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:19:06 Discord     Discord.Net v1.0.2 (API v6)
+00:19:06 Gateway     Connecting
+00:19:07 Gateway     Connected
+00:19:07 Gateway     Ready
+00:19:10 Command Han Jovan called !rps <@140197514958602240>
+00:19:21 Gateway     A MessageReceived handler is blocking the gateway task.
+00:19:22 Gateway     A MessageReceived handler has thrown an unhandled exception.:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Program.<HandleCommandAsync>d__4.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Program.cs:line 70
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.EventExtensions.<InvokeAsync>d__1`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.WebSocket.DiscordSocketClient.<TimeoutWrap>d__128.MoveNext()
