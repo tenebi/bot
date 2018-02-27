@@ -1,0 +1,12 @@
+00:17:11 Settings    Loaded configuration.json successfully
+00:17:11 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:17:11 Discord     Discord.Net v1.0.2 (API v6)
+00:17:12 Gateway     Connecting
+00:17:13 Gateway     Connected
+00:17:13 Gateway     Ready
+00:17:17 Command Han Jovan called !rps
+00:17:17 Command Han Error with command !rps: The input text has too few parameters
+00:17:20 Command Han Jovan called !rps <@140197514958602240>
+00:17:22 Command Han Jovan called !rps <@140197514958602240>
+00:17:28 Command Han Jovan called !rps <@140197514958602240>
+00:17:36 Command Han Jovan sent rps withdraw

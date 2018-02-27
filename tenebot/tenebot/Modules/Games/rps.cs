@@ -32,11 +32,10 @@ namespace tenebot.Modules.Utility
                 firstPlayerSelection = RockPaperScissors.nothing;
                 secondPlayerSelection = RockPaperScissors.nothing;
             }
-
-            public bool PlayersReady => firstPlayer != null && secondPlayer != null ? true : false;
         }
 
         private static System.Timers.Timer timer = new System.Timers.Timer();
+        private static ISocketMessageChannel mainChannel = null;
         private static RpsPlayers players = new RpsPlayers();
         private static bool gameRunning = false;
 
@@ -47,44 +46,43 @@ namespace tenebot.Modules.Utility
 
         private void StopGame()
         {
-            EmbedBuilder message = new EmbedBuilder()
-                .WithTitle(":scissors: :newspaper: :gem: The brawl ended before it began, someone pussied out")
-                .WithColor(Color.Magenta);
-
-            MessageHandler handler = new MessageHandler();
-            handler.SendMessage(message);
             gameRunning = false;
             timer.Stop();
+            mainChannel = null;
             players = new RpsPlayers();
         }
 
         private void Brawl()
         {
-            EmbedBuilder message = new EmbedBuilder()
-                .WithTitle("shit works")
-                .WithDescription($"{players.FirstPlayer}: {players.FirstPlayerSelection} vs {players.SecondPlayerSelection} :{players.SecondPlayer}")
-                .WithColor(Color.Magenta);
-
             MessageHandler handler = new MessageHandler();
-            handler.SendMessage(message);
+            SendMessage(handler.BuildEmbed("shit works", $"{players.FirstPlayer}: {players.FirstPlayerSelection} vs {players.SecondPlayerSelection} :{players.SecondPlayer}", Color.Magenta));
+
+            //gamelogic here
+
             StopGame();
         }
 
         private void AddSelection(SocketUser player, RockPaperScissors selection)
         {
-            if (players.FirstPlayer == null)
+            if (players.FirstPlayer != null && players.SecondPlayer != null)
             {
-                players.FirstPlayer = player;
-                players.FirstPlayerSelection = selection;
+                if (player.Id == players.FirstPlayer.Id)
+                {
+                    players.FirstPlayerSelection = selection;
+                }
+                else if (player.Id == players.SecondPlayer.Id)
+                {
+                    players.SecondPlayerSelection = selection;
+                }
+
+                if (players.FirstPlayerSelection != RockPaperScissors.nothing && players.SecondPlayerSelection != RockPaperScissors.nothing)
+                {
+                    Brawl();
+                }
             }
-            else if (players.SecondPlayer == null)
+            else
             {
-                players.FirstPlayer = player;
-                players.FirstPlayerSelection = selection;
-            }
-            else if (players.PlayersReady)
-            {
-                Brawl();
+                Debugging.Log("RPS AddSelection", "One or both players are nulls, there was an error in setting up the game", LogSeverity.Error);
             }
         }
 
@@ -95,121 +93,48 @@ namespace tenebot.Modules.Utility
                 .WithColor(Color.Magenta);
 
             MessageHandler handler = new MessageHandler();
-            handler.SendMessage(message);
+            SendMessage(message);
             gameRunning = false;
             timer.Stop();
             players = new RpsPlayers();
         }
 
-        private EmbedBuilder[] BuildMessages(SocketUser firstPlayer, SocketUser secondPlayer)
+        public async Task SendMessage(EmbedBuilder message)
         {
-            EmbedBuilder firstPlayerMessage = new EmbedBuilder();
-            firstPlayerMessage.WithTitle("RPS is on!")
-                .WithDescription($"You've started a rock paper scissors match with {secondPlayer}.\nWrite 'rps selection' or 'rps withdraw' to pussy out.")
-                .WithColor(Color.Blue);
-
-            EmbedBuilder secondPlayerMessage = new EmbedBuilder();
-            secondPlayerMessage.WithTitle("RPS is on!")
-                .WithDescription($"{Context.User.Mention} challanged you to rock paper scissors.\nWrite 'rps selection' or 'rps withdraw' to pussy out.")
-                .WithColor(Color.Red);
-
-            EmbedBuilder channelMessage = new EmbedBuilder()
-                .WithTitle(":scissors: :newspaper: :gem: A brawl is surely brewing.")
-                .WithDescription($"{firstPlayer.Mention} challanged {secondPlayer.Mention} to rock paper scissors!")
-                .WithColor(Color.Magenta);
-
-            return new EmbedBuilder[] { channelMessage, firstPlayerMessage, secondPlayerMessage };
+            await mainChannel.SendMessageAsync("", false, message.Build());
         }
 
         [Command("rock"), RequireContext(ContextType.DM)]
         public async Task RpsSelectRock()
         {
-            string title;
-            string message;
-
-            if (gameRunning)
-            {
-                AddSelection(Context.User, RockPaperScissors.rock);
-                title = "Selected rock";
-                message = "Wait for the other player.";
-            }
-            else
-            {
-                title = "No game running";
-                message = "Start a game by calling !rps @otherguy";
-            }
-
-            EmbedBuilder msg = new EmbedBuilder();
-            msg.WithTitle(title)
-                .WithDescription(message)
-                .WithColor(Color.Orange);
-
-            await UserExtensions.SendMessageAsync(Context.User, "", false, msg);
+            AddSelection(Context.User, RockPaperScissors.rock);
+            MessageHandler handler = new MessageHandler();
+            await UserExtensions.SendMessageAsync(Context.User, "", false, handler.BuildEmbed("Selected rock, wait for the other person.", "", Color.Magenta));
         }
 
         [Command("paper"), RequireContext(ContextType.DM)]
         public async Task RpsSelectPaper()
         {
-            string title;
-            string message;
-
-            if (gameRunning)
-            {
-                AddSelection(Context.User, RockPaperScissors.paper);
-                title = "Selected paper";
-                message = "Wait for the other player.";
-            }
-            else
-            {
-                title = "No game running";
-                message = "Start a game by calling !rps @otherguy";
-            }
-
-            EmbedBuilder msg = new EmbedBuilder();
-            msg.WithTitle(title)
-                .WithDescription(message)
-                .WithColor(Color.Orange);
-
-            await UserExtensions.SendMessageAsync(Context.User, "", false, msg);
+            AddSelection(Context.User, RockPaperScissors.paper);
+            MessageHandler handler = new MessageHandler();
+            await UserExtensions.SendMessageAsync(Context.User, "", false, handler.BuildEmbed("Selected paper, wait for the other person.", "", Color.Magenta));
         }
 
         [Command("scissors"), RequireContext(ContextType.DM)]
         public async Task RpsSelectScissors()
         {
-            string title;
-            string message;
-
-            if (gameRunning)
-            {
-                AddSelection(Context.User, RockPaperScissors.scissors);
-                title = "Selected scissors";
-                message = "Wait for the other player.";
-            }
-            else
-            {
-                title = "No game running";
-                message = "Start a game by calling !rps @otherguy";
-            }
-
-            EmbedBuilder msg = new EmbedBuilder();
-            msg.WithTitle(title)
-                .WithDescription(message)
-                .WithColor(Color.Orange);
-
-            await UserExtensions.SendMessageAsync(Context.User, "", false, msg);
+            AddSelection(Context.User, RockPaperScissors.scissors);
+            MessageHandler handler = new MessageHandler();
+            await UserExtensions.SendMessageAsync(Context.User, "", false, handler.BuildEmbed("Selected scissors, wait for the other person.", "", Color.Magenta));
         }
 
         [Command("withdraw"), RequireContext(ContextType.DM)]
         public async Task RpsWithdraw()
         {
             StopGame();
-
-            EmbedBuilder msg = new EmbedBuilder();
-            msg.WithTitle("Cancelled rock paper scissors.")
-                .WithDescription($"You pussied out.")
-                .WithColor(Color.Orange);
-
-            await UserExtensions.SendMessageAsync(Context.User, "", false, msg);
+            MessageHandler handler = new MessageHandler();
+            await UserExtensions.SendMessageAsync(Context.User, "", false, handler.BuildEmbed("Cancelled rock paper scissors", "You pussied out.", Color.Orange).Build());
+            await mainChannel.SendMessageAsync("", false, handler.BuildEmbed("Cancelled rock paper scissors", $"{Context.User.Mention} pussied out.", Color.Magenta).Build());
         }
 
         [Command ("help")]
@@ -226,22 +151,35 @@ namespace tenebot.Modules.Utility
         [Command]
         public async Task Start(SocketUser secondPlayer)
         {
-            SocketUser firstPlayer = Context.User;
+            if (gameRunning)
+            {
+                MessageHandler handler = new MessageHandler();
+                await ReplyAsync("", false, handler.BuildEmbed("Game is already running.", "", Color.Magenta).Build());
+            }
+            else
+            {
+                SocketUser firstPlayer = Context.User;
 
-            EmbedBuilder[] messages = BuildMessages(firstPlayer, secondPlayer);
+                MessageHandler handler = new MessageHandler();
+                EmbedBuilder msg_player1 = handler.BuildEmbed("RPS is on!", $"You've started a rock paper scissors match with {secondPlayer}.\nWrite 'rps selection' or 'rps withdraw' to pussy out.", Color.Magenta);
+                EmbedBuilder msg_player2 = handler.BuildEmbed("RPS is on!", $"{Context.User.Mention} challanged you to rock paper scissors.\nWrite 'rps selection' or 'rps withdraw' to pussy out.", Color.Magenta);
+                EmbedBuilder msg_channel = handler.BuildEmbed(":gem: :newspaper: :scissors: A brawl is surely brewing.", $"{firstPlayer.Mention} challanged {secondPlayer.Mention} to rock paper scissors!", Color.Magenta);
 
-            await ReplyAsync("", false, messages[0].Build());
-            await UserExtensions.SendMessageAsync(firstPlayer, "", false, messages[1]);
-            await UserExtensions.SendMessageAsync(secondPlayer, "", false, messages[2]);
+                await ReplyAsync("", false, msg_channel.Build());
+                await UserExtensions.SendMessageAsync(firstPlayer, "", false, msg_player1);
+                await UserExtensions.SendMessageAsync(secondPlayer, "", false, msg_player2);
 
-            players.FirstPlayer = firstPlayer;
-            players.SecondPlayer = secondPlayer;
+                players.FirstPlayer = firstPlayer;
+                players.SecondPlayer = secondPlayer;
 
-            timer.Interval = 30000;
-            timer.Elapsed += new ElapsedEventHandler(HandleTimer);
-            timer.Start();
+                mainChannel = Context.Channel;
+            
+                timer.Interval = 30000;
+                timer.Elapsed += new ElapsedEventHandler(HandleTimer);
+                timer.Start();
 
-            gameRunning = true;
+                gameRunning = true;
+            }
         }
     }
 }

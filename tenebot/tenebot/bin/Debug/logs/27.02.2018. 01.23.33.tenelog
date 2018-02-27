@@ -1,0 +1,37 @@
+01:23:33 Settings    Loaded configuration.json successfully
+01:23:33 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+01:23:33 Discord     Discord.Net v1.0.2 (API v6)
+01:23:34 Gateway     Connecting
+01:23:35 Gateway     Connected
+01:23:35 Gateway     Ready
+01:23:38 Command Han Jovan called !rps <@181108473759662081>
+01:23:41 Command Han Jovan sent rps rock
+01:23:45 Gateway     A MessageReceived handler is blocking the gateway task.
+01:23:45 Gateway     A MessageReceived handler has thrown an unhandled exception.:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Program.<HandleCommandAsync>d__4.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Program.cs:line 86
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.EventExtensions.<InvokeAsync>d__1`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.WebSocket.DiscordSocketClient.<TimeoutWrap>d__128.MoveNext()
+01:24:13 Command Han tenebi sent rps rock
+01:24:13 Command     Discord.Commands.CommandException: Error occurred executing "rock" for tenebi#4551 in @tenebi#4551. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Modules.Utility.Rps.AddSelection(SocketUser player, RockPaperScissors selection) in D:\Gits\tenebot\tenebot\tenebot\Modules\Games\Rps.cs:line 69
+   at tenebot.Modules.Utility.Rps.<RpsSelectRock>d__12.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Modules\Games\Rps.cs:line 105
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+01:24:14 Command Han Error with command rps rock: Object reference not set to an instance of an object
+01:24:30 Command Han Jovan called !rps <@181108473759662081>
+01:24:33 Command Han Jovan sent rps rock
+01:24:38 Command Han tenebi sent rps rock

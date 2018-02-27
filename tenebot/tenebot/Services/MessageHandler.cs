@@ -11,9 +11,16 @@ namespace tenebot.Services
 {
     public class MessageHandler : ModuleBase<SocketCommandContext>
     {
-        public async Task SendMessage(EmbedBuilder message)
+        public EmbedBuilder BuildEmbed(string title, string description, Color color)
         {
-            await ReplyAsync("", false, message.Build());
+            color = Color.LightGrey;
+
+            EmbedBuilder message = new EmbedBuilder()
+                .WithTitle(title)
+                .WithDescription(description)
+                .WithColor(color);
+
+            return message;
         }
     }
 }

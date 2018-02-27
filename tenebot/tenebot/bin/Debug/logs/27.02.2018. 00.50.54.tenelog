@@ -1,0 +1,11 @@
+00:50:54 Settings    Loaded configuration.json successfully
+00:50:54 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:50:54 Discord     Discord.Net v1.0.2 (API v6)
+00:50:55 Gateway     Connecting
+00:50:55 Gateway     Connected
+00:50:56 Gateway     Ready
+00:50:57 Command Han Jovan called !rps <@181108473759662081>
+00:51:01 Command Han Jovan sent rps withdraw
+00:51:58 Command Han tenebi sent rps withdraw
+00:52:01 Command Han tenebi sent fuck that shit
+00:52:01 Command Han Error with command fuck that shit: Unknown command
