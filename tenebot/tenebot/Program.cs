@@ -36,8 +36,7 @@ namespace tenebot
             Settings._client.Log += Debugging.Log;
             Settings._commands.Log += Debugging.Log;
             Settings._client.MessageUpdated += MessageUpdated;
-            Settings._client.UserJoined += AddToDatabase.addToDatabase;
-
+            Settings._client.UserJoined += SqlHandler.TaskInsertUser;
 
             await RegisterCommandAsync();
             await Settings._client.LoginAsync(TokenType.Bot, Settings.BotToken);

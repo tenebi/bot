@@ -13,7 +13,7 @@ namespace tenebot.Modules.Reactions
 {
     public class pat : ModuleBase<SocketCommandContext>
     {
-        string connectionString = Database.ConnectionString;
+        string connectionString = SqlHandler.GetConnectionString();
 
         [Command("pat")]
         public async Task Pat(SocketGuildUser user)
@@ -33,35 +33,10 @@ namespace tenebot.Modules.Reactions
 
         public void UpdatePats(SocketGuildUser user)
         {
-            string queryPats = $"SELECT Pats FROM Users WHERE UserId = {user.Id}";
-            int pats = 0;
+            List<string> selection = SqlHandler.Select("User", "Pats", $"UserId = {user.Id}");
+            int pats = int.Parse(selection[0]);
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(queryPats, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            pats = reader.GetInt16(0);
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            string update = $"UPDATE Users SET Pats = {pats} WHERE UserId = {user.Id}";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(update, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
-
-
-            }
+            SqlHandler.Update("User", $"Pats = {pats}", $"UserId = {user.Id}");
         }
     }
 }
