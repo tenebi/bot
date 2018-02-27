@@ -168,6 +168,20 @@ namespace tenebot.Services
         }
 
         /// <summary>
+        /// Reads input from the console.
+        /// </summary>
+        /// <param name="comment">Additional comment for information to the user.</param>
+        /// <returns>The inputted line.</returns>
+        public static string Read(string comment)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write($"{DateTime.Now,-19} [   Input] {comment} : ");
+            Console.ResetColor();
+
+            return Console.ReadLine();
+        }
+
+        /// <summary>
         /// Divides by zero, meant to cause an exception for testing try catch methods. Only to be used in debugging.
         /// </summary>
         public static void DivideByZero()

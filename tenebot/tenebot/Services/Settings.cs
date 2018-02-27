@@ -15,7 +15,10 @@ namespace tenebot.Services
         public string BotToken { get; set; }
         public IList<string> OwnerIds { get; set; }
         public string AdminChannel { get; set; }
+        public bool EnableDatabase { get; set; }
         public string BaseHostUrl { get; set; }
+        public string SqlServerUrl { get; set; }
+        public string DatabaseName { get; set; }
     }
 
     public static class Settings
@@ -29,7 +32,10 @@ namespace tenebot.Services
         private static string botToken;
         private static IList<string> ownerIds;
         private static string adminChannel;
+        private static bool enableDatabase;
         private static string baseHostUrl;
+        private static string databaseName;
+        private static string sqlServerUrl;
 
         private static string configPath = "configuration.json";
 
@@ -58,12 +64,24 @@ namespace tenebot.Services
         /// Returns the url for tenebots web host.
         /// </summary>
         public static string BaseHostUrl { get => baseHostUrl; set => baseHostUrl = value; }
+        /// <summary>
+        /// Returns the url for the sql server.
+        /// </summary>
+        public static string SqlServerUrl { get => sqlServerUrl; set => sqlServerUrl = value; }
+        /// <summary>
+        /// Name of the database.
+        /// </summary>
+        public static string DatabaseName { get => databaseName; set => databaseName = value; }
+        /// <summary>
+        /// Returns true or false depending on if the database is enabled in settings.
+        /// </summary>
+        public static bool EnableDatabase { get => enableDatabase; set => enableDatabase = value; }
 
         /// <summary>
         /// Loads the settings from a json file and stores it in the settings class variable.
         /// </summary>
         /// <returns>Returns bool if it loaded or failed to load.</returns>
-        public static bool Load()
+        public static bool LoadJson()
         {
             Debugging.Log("Settings", $"Loading configuration.json");
 
@@ -75,16 +93,45 @@ namespace tenebot.Services
                 botToken = middleMan.BotToken;
                 ownerIds = middleMan.OwnerIds;
                 adminChannel = middleMan.AdminChannel;
-                BaseHostUrl = middleMan.BaseHostUrl;
+                enableDatabase = middleMan.EnableDatabase;
+                baseHostUrl = middleMan.BaseHostUrl;
+                sqlServerUrl = middleMan.SqlServerUrl;
+                databaseName = middleMan.DatabaseName;
 
                 Debugging.Log("Settings", $"Loaded configuration.json successfully");
                 return true;
             }
             catch (Exception e)
             {
-                Debugging.Log(new LogMessage(LogSeverity.Error, "Settings", $"Exception while trying to load settings from configuration", e));
+                Debugging.Log(new LogMessage(LogSeverity.Critical, "Settings", $"Exception while trying to load settings from configuration", e));
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Sets the connection string for logging in to the server.
+        /// </summary>
+        /// <returns>Returns bool if it successful or not.</returns>
+        public static bool SqlServerSetup()
+        {
+            if (!enableDatabase)
+            {
+                Debugging.Log("SQL Server Setup", $"Database disabled in configuration. Some features which use a mysql database won't be available", Discord.LogSeverity.Warning);
+                return false;
+            }
+
+            Debugging.Log("SQL Server Setup", "Please enter login info");
+            string port = Debugging.Read("Port");
+            string username = Debugging.Read("Username");
+            string password = Debugging.Read("Password");
+            Console.Clear();
+
+            SqlHandler.SetConnectionString(sqlServerUrl, port, username, password);
+
+            if (!SqlHandler.TestDatabase())
+                return false;
+
+            return true;
         }
     }
 }

@@ -1,0 +1,9 @@
+17:39:36 Settings    Loaded configuration.json successfully
+17:39:36 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+17:39:37 Discord     Discord.Net v1.0.2 (API v6)
+17:39:37 Gateway     Connecting
+17:39:39 Gateway     Connected
+17:39:39 Gateway     Ready
+17:54:32 Command Han Jovan called !rps <@140197514958602240>
+17:54:44 Command Han Jovan called !withdraw
+17:54:44 Command Han Error with command !withdraw: Unknown command

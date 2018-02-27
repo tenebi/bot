@@ -1,0 +1,9 @@
+23:12:50 Settings    Loaded configuration.json successfully
+23:12:51 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+23:12:51 Discord     Discord.Net v1.0.2 (API v6)
+23:12:52 Gateway     Connecting
+23:12:52 Gateway     Connected
+23:12:53 Gateway     Ready
+23:13:12 Command Han tenebi called !lolstats euw tenebi
+23:14:00 Command Han tenebi called !modify username tenebot
+23:14:08 Command Han tenebi called !lolstats euw Strelizia

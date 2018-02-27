@@ -1,0 +1,11 @@
+01:02:32 Settings    Loaded configuration.json successfully
+01:02:32 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+01:02:32 Discord     Discord.Net v1.0.2 (API v6)
+01:02:32 Gateway     Connecting
+01:02:33 Gateway     Connected
+01:02:33 Gateway     Ready
+01:02:35 Command Han Jovan called !rps <@181108473759662081>
+01:02:38 Command Han Jovan sent rps rock
+01:03:03 Command Han tenebi sent rps paper
+01:04:16 Command Han tenebi called !lolstats euw tenebi
+01:04:16 Command Han Error with command !lolstats euw tenebi: Unknown command

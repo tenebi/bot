@@ -1,0 +1,22 @@
+01:07:08 Settings    Loaded configuration.json successfully
+01:07:08 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+01:07:08 Discord     Discord.Net v1.0.2 (API v6)
+01:07:09 Gateway     Connecting
+01:07:10 Gateway     Connected
+01:07:10 Gateway     Ready
+01:07:19 Command Han Jovan called !rps <@181108473759662081>
+01:07:23 Command Han Jovan sent rps rock
+01:07:24 Command Han tenebi sent rps scissors
+01:07:46 Command Han Jovan sent rps withdraw
+01:07:46 Command     Discord.Commands.CommandException: Error occurred executing "withdraw" for Jovan#2244 in @Jovan#2244. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Modules.Utility.Rps.<RpsWithdraw>d__15.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Modules\Games\Rps.cs:line 134
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+01:07:46 Command Han Error with command rps withdraw: Object reference not set to an instance of an object

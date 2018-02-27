@@ -27,7 +27,9 @@ namespace tenebot
                 .AddSingleton(Settings._commands)
                 .BuildServiceProvider();
 
-            Settings.Load();
+            Settings.LoadJson();
+            Settings.SqlServerSetup();
+
             Embeds.InitializeAdminEmbeds();
 
             //subs
@@ -57,7 +59,7 @@ namespace tenebot
 
             int argPos = 0;
 
-            if (message.HasStringPrefix("!", ref argPos) || message.HasMentionPrefix(Settings._client.CurrentUser, ref argPos))
+            if ((message.HasStringPrefix("!", ref argPos) || message.HasMentionPrefix(Settings._client.CurrentUser, ref argPos)) && !(message.Channel.ToString().Contains(message.Author.ToString())))
             {
                 var context = new SocketCommandContext(Settings._client, message);
                 Debugging.Log("Command Handler", $"{context.User.Username} called {message}");
@@ -68,6 +70,22 @@ namespace tenebot
                     Debugging.Log("Command Handler", $"Error with command {message}: {result.ErrorReason.Replace(".", "")}", LogSeverity.Warning);
                     EmbedBuilder embed = new EmbedBuilder();
                     embed.WithTitle(":no_entry_sign:  Error!")
+                        .WithColor(Color.DarkRed)
+                        .WithDescription(result.ErrorReason);
+                    await arg.Channel.SendMessageAsync("", false, embed.Build());
+                }
+            }
+            else if (message.Channel.ToString().Contains(message.Author.ToString())) //direct message
+            {   
+                var context = new SocketCommandContext(Settings._client, message);
+                Debugging.Log("Command Handler, DM", $"{context.User.Username} sent {message}");
+
+                var result = await Settings._commands.ExecuteAsync(context, argPos, Settings._services);
+                if (!result.IsSuccess && result.Error != CommandError.ObjectNotFound || result.Error != CommandError.Exception)
+                {
+                    Debugging.Log("Command Handler, DM", $"Error with command {message}: {result.ErrorReason.Replace(".", "")}", LogSeverity.Warning);
+                    EmbedBuilder embed = new EmbedBuilder();
+                    embed.WithTitle(":no_entry_sign:  DM Error!")
                         .WithColor(Color.DarkRed)
                         .WithDescription(result.ErrorReason);
                     await arg.Channel.SendMessageAsync("", false, embed.Build());

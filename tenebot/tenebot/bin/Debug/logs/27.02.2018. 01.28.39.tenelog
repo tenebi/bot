@@ -1,0 +1,47 @@
+01:28:39 Settings    Loaded configuration.json successfully
+01:28:39 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+01:28:39 Discord     Discord.Net v1.0.2 (API v6)
+01:28:40 Gateway     Connecting
+01:28:40 Gateway     Connected
+01:28:41 Gateway     Ready
+01:28:42 Command Han Jovan sent rps rock
+01:28:43 Command     Discord.Commands.CommandException: Error occurred executing "rock" for Jovan#2244 in @Jovan#2244. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Modules.Utility.Rps.AddSelection(SocketUser player, RockPaperScissors selection) in D:\Gits\tenebot\tenebot\tenebot\Modules\Games\Rps.cs:line 67
+   at tenebot.Modules.Utility.Rps.<RpsSelectRock>d__12.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Modules\Games\Rps.cs:line 103
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+01:28:43 Command Han Error with command rps rock: Object reference not set to an instance of an object
+01:28:50 Command Han Jovan called !rps <@181108473759662081>
+01:28:54 Command Han Jovan sent rps withdraw
+01:28:54 Command     Discord.Commands.CommandException: Error occurred executing "withdraw" for Jovan#2244 in @Jovan#2244. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Modules.Utility.Rps.<RpsWithdraw>d__15.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Modules\Games\Rps.cs:line 130
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+01:28:55 Command Han Error with command rps withdraw: Object reference not set to an instance of an object
+01:28:57 Command Han tenebi sent rps withdraw
+01:28:58 Command     Discord.Commands.CommandException: Error occurred executing "withdraw" for tenebi#4551 in @tenebi#4551. ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Modules.Utility.Rps.<RpsWithdraw>d__15.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Modules\Games\Rps.cs:line 130
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+01:28:58 Command Han Error with command rps withdraw: Object reference not set to an instance of an object

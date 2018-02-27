@@ -7,5 +7,8 @@
     "140197514958602240"
   ],
   "AdminChannel": "administration",
-  "BaseHostUrl": "http://139.59.162.138/tenebot/"
+  "EnableDatabase": false,
+  "BaseHostUrl": "http://139.59.162.138/tenebot/",
+  "SqlServerUrl": "nada",
+  "DatabaseName": "TenebotDatabase"
 }
