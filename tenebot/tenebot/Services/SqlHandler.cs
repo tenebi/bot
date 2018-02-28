@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Linq;
 using tenebot.Services;
+using System.Threading.Tasks;
+using Discord.WebSocket;
 
 namespace tenebot
 {
@@ -29,14 +31,13 @@ namespace tenebot
 
                 readerlocal1 = test.ExecuteReader();
 
-
                 while (readerlocal1.Read())
                 {
-                    Debugging.Log("Database Test", readerlocal1.GetString("TABLE_NAME"));
+                    Debugging.Log("Database Test", readerlocal1.GetString("TABLE_NAME"), Discord.LogSeverity.Debug);
                 }
                 DatabaseConnection.Close();
 
-
+                Debugging.Log("Database Test", "Connection to database is valid");
                 return true;
             }
             catch (Exception e)
@@ -49,7 +50,6 @@ namespace tenebot
             
         }
 
-
         /// <summary>
         /// Attempts fech all field names in a given database and table.
         /// Used for internal functions, may be used for getting field names.
@@ -59,7 +59,6 @@ namespace tenebot
         /// <returns>Returns a string list containing all field names.</returns>
         public static List<string> GetDataBaseFields(string databaseName, string tableName)
         {
-
             DatabaseConnection.Close();
             DatabaseConnection.Open();
             MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
@@ -78,7 +77,6 @@ namespace tenebot
             DatabaseConnection.Close();
             return FieldNames;
         }
-
 
         /// <summary>
         /// Attempts fech total count of fields withing a given database and table.
@@ -117,11 +115,8 @@ namespace tenebot
         /// <param name="databaseName">Selected database.</param>
         /// <param name="tableName">Selected table.</param>
         /// <returns>Returns a string list containing all field datatypes.</returns>
-        /// 
         public static List<string> GetDataBaseFieldTypes(string databaseName, string tableName)
         {
-
-
             DatabaseConnection.Open();
             MySqlCommand clmn = new MySqlCommand("SHOW FIELDS FROM " + databaseName + "." + tableName + ";", DatabaseConnection);
             MySqlDataReader reader;
@@ -181,7 +176,7 @@ namespace tenebot
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
         /// <returns>A list of selected row strings with columns seperated by a comma (,).</returns>
         /// <example>Select("Users", "Username, Pats", "UserId = 1");</example>
-        public static List<string> Select(string tableName, string selectQuery, string condition, string databaseName)
+        public static List<string> Select(string tableName, string selectQuery, string condition, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
 
@@ -204,8 +199,6 @@ namespace tenebot
             DatabaseConnection.Close();
             DatabaseConnection.Open();
             //MySqlCommand clmn = new MySqlCommand($"SHOW FIELDS FROM {databaseName}.{tableName};", DatabaseConnection);
-
-            
 
             if (selectQuery != "*")
             {
@@ -314,13 +307,13 @@ namespace tenebot
         /// <param name="tableName">Table from which to delete.</param>
         /// <param name="values">Values to be insterted.</param>
         /// <param name="databaseName">Optional name for the database (disregard the null, it's set).</param>
-        public static void Insert(string databaseName, string tablename, string values)
+        public static void Insert(string tableName, string values, string databaseName = null)
         {
             databaseName = Settings.DatabaseName;
 
             MySqlDataReader reader;
             DatabaseConnection.Open();
-            MySqlCommand cmd = new MySqlCommand($"Insert Into {databaseName}.{tablename} Values ({values});", DatabaseConnection);
+            MySqlCommand cmd = new MySqlCommand($"Insert Into {databaseName}.{tableName} Values ({values});", DatabaseConnection);
 
             try
             {
@@ -390,7 +383,11 @@ namespace tenebot
 
             DatabaseConnection.Close();
         }
+
+        public static Task TaskInsertUser(SocketGuildUser user)
+        {
+            Insert("User(UserId, Username)", $"('{user.Id}', '{user.Username}')");
+            return Task.CompletedTask;
+        }
     }
 }
- 
-
