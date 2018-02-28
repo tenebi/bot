@@ -73,6 +73,10 @@ namespace tenebot
                         .WithDescription(result.ErrorReason);
                     await arg.Channel.SendMessageAsync("", false, embed.Build());
                 }
+                else
+                {
+                    Debugging.Log("Command Handler", $"what", LogSeverity.Critical);
+                }
             }
             else if (message.Channel.ToString().Contains(message.Author.ToString())) //direct message
             {   

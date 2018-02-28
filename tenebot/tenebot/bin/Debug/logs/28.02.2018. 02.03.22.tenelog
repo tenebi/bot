@@ -1,0 +1,22 @@
+02:03:23 Settings    Loaded configuration.json successfully
+02:03:23 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+02:03:23 Discord     Discord.Net v1.0.2 (API v6)
+02:03:23 Gateway     Connecting
+02:03:24 Gateway     Connected
+02:03:24 Gateway     Ready
+02:03:34 Command Han Jovan called !ddlc
+02:03:34 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/dokis/8.jpg' is reachable
+02:03:34 CheckHttpRe 'http://139.59.162.138/tenebot/dokis/8.jpg' is reachable
+02:03:55 Command Han Jovan called !lolstats nothing tenebi
+02:05:46 Gateway     System.Exception: Server missed last heartbeat
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.ConnectionManager.<>c__DisplayClass28_0.<<StartAsync>b__0>d.MoveNext()
+02:05:47 Gateway     Disconnecting
+02:06:49 Command Han Error with command !lolstats nothing tenebi: Type provided must be an EnumParameter name: enumType
+02:06:49 Gateway     A MessageReceived handler is blocking the gateway task.
+02:06:49 Gateway     Disconnected
+02:06:50 Gateway     Connecting
+02:06:51 Gateway     Failed to resume previous session
+02:06:51 Gateway     Connected
+02:06:52 Gateway     Ready

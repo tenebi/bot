@@ -1,0 +1,14 @@
+01:56:00 Settings    Loaded configuration.json successfully
+01:56:00 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+01:56:00 Discord     Discord.Net v1.0.2 (API v6)
+01:56:00 Gateway     Connecting
+01:56:01 Gateway     Connected
+01:56:01 Gateway     Ready
+01:56:03 Command Han Jovan called !hmm
+01:56:14 Command Han Jovan called !ddlc
+01:56:14 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/dokis/7.jpg' is reachable
+01:56:14 CheckHttpRe 'http://139.59.162.138/tenebot/dokis/7.jpg' is reachable
+01:56:17 Command Han ititan called !ddlc
+01:56:17 CheckHttpRe Checking if 'http://139.59.162.138/tenebot/dokis/3.jpg' is reachable
+01:56:17 CheckHttpRe 'http://139.59.162.138/tenebot/dokis/3.jpg' is reachable
+01:56:22 Command Han Jovan called !lolstats nothing tenebi

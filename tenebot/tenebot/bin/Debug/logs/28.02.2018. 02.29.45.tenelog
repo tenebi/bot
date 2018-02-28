@@ -1,0 +1,31 @@
+02:29:46 Settings    Loaded configuration.json successfully
+02:29:46 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+02:29:46 Discord     Discord.Net v1.0.2 (API v6)
+02:29:47 Gateway     Connecting
+02:29:47 Gateway     Connected
+02:29:48 Gateway     Ready
+02:29:49 Command Han Jovan called !lolstats nothing tenebi
+02:30:00 Command Han Jovan called !lolstats euw tenebi
+02:30:23 Command Han Jovan called !lolstats euw tenebi
+02:30:49 Gateway     A MessageReceived handler is blocking the gateway task.
+02:30:49 Gateway     A MessageReceived handler has thrown an unhandled exception.:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at tenebot.Program.<HandleCommandAsync>d__4.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Program.cs:line 69
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.EventExtensions.<InvokeAsync>d__1`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.WebSocket.DiscordSocketClient.<TimeoutWrap>d__128.MoveNext()
+02:30:49 Gateway     System.Exception: WebSocket connection was closed ---> Discord.Net.WebSocketClosedException: The server sent close 1000: ""
+   at Discord.Net.WebSockets.DefaultWebSocketClient.<RunAsync>d__32.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.ConnectionManager.<>c__DisplayClass28_0.<<StartAsync>b__0>d.MoveNext()
+02:30:49 Gateway     Disconnecting
+02:30:49 Gateway     Disconnected
+02:30:50 Gateway     Connecting
+02:30:51 Gateway     Resumed previous session

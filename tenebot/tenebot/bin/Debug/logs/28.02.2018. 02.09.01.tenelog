@@ -1,0 +1,24 @@
+02:09:01 Settings    Loaded configuration.json successfully
+02:09:01 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+02:09:01 Discord     Discord.Net v1.0.2 (API v6)
+02:09:02 Gateway     Connecting
+02:09:03 Gateway     Connected
+02:09:03 Gateway     Ready
+02:09:06 Command Han Jovan called !lolstats nothing tenebi
+02:09:11 Command     Discord.Commands.CommandException: Error occurred executing "lolstats" for Jovan#2244 in space hunters/tenebot. ---> System.ArgumentException: Type provided must be an Enum.
+Parameter name: enumType
+   at System.Enum.TryParseEnum(Type enumType, String value, Boolean ignoreCase, EnumResult& parseResult)
+   at System.Enum.TryParse[TEnum](String value, Boolean ignoreCase, TEnum& result)
+   at System.Enum.TryParse[TEnum](String value, TEnum& result)
+   at tenebot.Modules.RiotAPI.GetStats.<getStats>d__4.MoveNext() in D:\Gits\tenebot\tenebot\tenebot\Modules\RiotAPI\GetStats.cs:line 34
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+02:09:19 Command Han Error with command !lolstats nothing tenebi: Type provided must be an EnumParameter name: enumType
+02:09:19 Gateway     A MessageReceived handler is blocking the gateway task.
