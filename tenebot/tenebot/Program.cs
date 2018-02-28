@@ -65,7 +65,7 @@ namespace tenebot
                 Debugging.Log("Command Handler", $"{context.User.Username} called {message}");
 
                 var result = await Settings._commands.ExecuteAsync(context, argPos, Settings._services);
-                if (!result.IsSuccess && result.Error != CommandError.ObjectNotFound || result.Error != CommandError.Exception)
+                if (!result.IsSuccess && result.Error != CommandError.ObjectNotFound || result.Error != CommandError.Exception || result.ErrorReason != "The server responded with error 400: BadRequest")
                 {
                     Debugging.Log("Command Handler", $"Error with command {message}: {result.ErrorReason.Replace(".", "")}", LogSeverity.Warning);
                     EmbedBuilder embed = new EmbedBuilder();

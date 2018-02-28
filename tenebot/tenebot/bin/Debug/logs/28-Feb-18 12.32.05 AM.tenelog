@@ -1,0 +1,11 @@
+00:32:06 Settings    Loaded configuration.json successfully
+00:32:06 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:32:06 Discord     Discord.Net v1.0.2 (API v6)
+00:32:07 Gateway     Connecting
+00:32:07 Gateway     Connected
+00:32:08 Gateway     Ready
+00:32:18 Command Han tenebi called !tty
+00:32:18 Command Han Error with command !tty: Unknown command
+00:32:23 Command Han tenebi called !lolstats tty
+00:32:23 Command Han Error with command !lolstats tty: The input text has too few parameters
+00:32:29 Command Han tenebi called !lolstats tty tenebi

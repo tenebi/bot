@@ -1,0 +1,25 @@
+23:02:28 Settings    Loaded configuration.json successfully
+23:02:28 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+23:02:28 Discord     Discord.Net v1.0.2 (API v6)
+23:02:28 Gateway     Connecting
+23:02:29 Gateway     Connected
+23:02:29 Gateway     Ready
+23:02:35 Command Han tenebi called !lolstats euw tenebi
+23:02:36 Command     Discord.Commands.CommandException: Error occurred executing "lolstats" for tenebi#4551 in space hunters/tenebot. ---> System.TypeInitializationException: The type initializer for 'tenebot.Modules.RiotAPI.RIOTAPI' threw an exception. ---> RiotSharp.RiotSharpException: 429, Rate Limit Exceeded
+   at RiotSharp.Http.RequesterBase.HandleRequestFailure(HttpStatusCode statusCode)
+   at RiotSharp.Http.RequesterBase.Get(HttpRequestMessage request)
+   at RiotSharp.Http.RateLimitedRequester.CreateGetRequest(String relativeUrl, Region region, List`1 addedArguments, Boolean useHttps)
+   at RiotSharp.StaticRiotApi.GetVersions(Region region)
+   at tenebot.Modules.RiotAPI.RIOTAPI..cctor() in C:\Users\cPC\Desktop\bot\tenebot\tenebot\Modules\RiotAPI\RIOTAPI.cs:line 27
+   --- End of inner exception stack trace ---
+   at tenebot.Modules.RiotAPI.GetStats.<getStats>d__5.MoveNext() in C:\Users\cPC\Desktop\bot\tenebot\tenebot\Modules\RiotAPI\GetStats.cs:line 94
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_1.<<BuildCommand>g__ExecuteCallback1>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.Commands.CommandInfo.<ExecuteAsyncInternal>d__41.MoveNext()
+   --- End of inner exception stack trace ---
+23:02:36 Command Han Error with command !lolstats euw tenebi: The type initializer for 'tenebotModulesRiotAPIRIOTAPI' threw an exception

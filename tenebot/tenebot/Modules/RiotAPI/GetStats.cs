@@ -3,105 +3,98 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RiotSharp;
-using RiotSharp.Misc;
+using MingweiSamuel.Camille;
+using MingweiSamuel.Camille.Enums;
 using System.Threading.Tasks;
 using Discord;
-using RiotSharp.Interfaces;
+using tenebot.Services;
 
 namespace tenebot.Modules.RiotAPI
 {
     public class GetStats : ModuleBase<SocketCommandContext>
     {
-        Region Region = new Region();
-        
+
+        Region REGION = new Region();
+
         EmbedBuilder helpEmbed = new EmbedBuilder()
-            .WithTitle("Hmm, that region doesn't seem to exist!")
-            .WithColor(Color.DarkRed)
-            .WithDescription("Here, try these for regions:")
-            .AddField("`EUW` `EUNE` `TR` `RU` `OCE` `NA` `KR` `JP` `LAN` `BR` `LAS`", "\n");
+            .WithTitle(":thinking: Hmm... that region doesn't seem to exist!")
+            .WithColor(Color.LightGrey)
+            .AddField("Here, try these for regions:", "`EUW`  `EUNE`  `TR`  `OCE`  `NA`  `KR`  `JP`  `LAN`  `BR`  `LAS`");
         EmbedBuilder errorEmbed = new EmbedBuilder()
             .WithTitle("Uh oh!")
             .WithColor(Color.DarkRed);
         EmbedBuilder statEmbed = new EmbedBuilder();
-            
-
 
         [Command("lolstats")]
         public async Task getStats(string region, [Remainder] string summonerName)
-        {
+        { 
             switch (region.ToUpper())
             {
-                case ("EUW"):
-                    Region = Region.euw;
+                case "EUW":
+                    REGION = Region.EUW;
                     break;
-                case ("EUNE"):
-                    Region = Region.eune;
+                case "EUNE":
+                    REGION = Region.EUNE;
                     break;
-                case ("TR"):
-                    Region = Region.tr;
+                case "TR":
+                    REGION = Region.TR;
                     break;
-                case ("RU"):
-                    Region = Region.ru;
+                case "RU":
+                    REGION = Region.RU;
                     break;
-                case ("OCE"):
-                    Region = Region.oce;
+                case "OCE":
+                    REGION = Region.OCE;
                     break;
-                case ("NA"):
-                    Region = Region.na;
+                case "NA":
+                    REGION = Region.NA;
                     break;
-                case ("KR"):
-                    Region = Region.kr;
+                case "KR":
+                    REGION = Region.KR;
                     break;
-                case ("JP"):
-                    Region = Region.jp;
+                case "JP":
+                    REGION = Region.JP;
                     break;
-                case ("LAN"):
-                    Region = Region.lan;
+                case "LAN":
+                    REGION = Region.LAN;
                     break;
-                case ("BR"):
-                    Region = Region.br;
+                case "BR":
+                    REGION = Region.BR;
                     break;
-                case ("LAS"):
-                    Region = Region.las;
+                case "LAS":
+                    REGION = Region.LAS;
                     break;
                 default:
                     await ReplyAsync("", false, helpEmbed.Build());
-                    break;
+                    return;
             }
+
+            Debugging.Log("RiotAPI", $"Region selected => {REGION}");
+
            
+            
+
+            var summoner = RIOTAPI.riotApi.Summoner.GetBySummonerName(REGION, summonerName);
+            var top3masteries = RIOTAPI.riotApi.ChampionMastery.GetAllChampionMasteries(REGION, summoner.Id).Take(3);
+
+            Debugging.Log("RiotAPI", $"{summoner.Name} - building statistics field...");
 
 
-            try
+            foreach (var mastery in top3masteries)
             {
-
-                var summoner = RIOTAPI.api.GetSummonerByName(Region, summonerName);
-                var top3masteries = RIOTAPI.api.GetChampionMasteries(Region, summoner.Id).Take(3);
-
-                
-                
-                foreach(var mastery in top3masteries)
-                {
-                    int champid = (int)mastery.ChampionId;
-                    var champ = RIOTAPI.staticapi.GetChampion(Region, champid, RiotSharp.StaticDataEndpoint.ChampionData.All);
-                    statEmbed.AddInlineField(champ.Name, mastery.ChampionPoints.ToString() + "mastery points");
-                }
-
-                statEmbed.WithTitle($"{summoner.Name}'s LoL statistics")
-                    .AddInlineField("Total mastery score:", RIOTAPI.api.GetTotalChampionMasteryScore(Region, summoner.Id))
-                    .WithThumbnailUrl("http://ddragon.leagueoflegends.com/cdn/"+ RIOTAPI.currentVersion +"/img/profileicon/" + summoner.ProfileIconId + ".png");
-
-
-
-                await ReplyAsync("", false, statEmbed.Build());
-
+                int champid = (int)mastery.ChampionId;
+                var champ = RIOTAPI.riotApi.LolStaticData.GetChampionById(REGION, mastery.ChampionId);
+                statEmbed.AddInlineField(champ.Name, mastery.ChampionPoints.ToString() + $" mastery points (Level {mastery.ChampionLevel})");
+                Debugging.Log("RiotAPI", $"Adding field with {champ.Name}");
             }
-            catch(RiotSharpException e)
-            {
-                errorEmbed.Description = e.Message;
-                await ReplyAsync("", false, errorEmbed.Build());
 
-            }
+            statEmbed.WithTitle($"{summoner.Name}'s LoL statistics")
+                .AddInlineField("Total mastery score:", RIOTAPI.riotApi.ChampionMastery.GetChampionMasteryScore(REGION, summoner.Id))
+                .WithThumbnailUrl("http://ddragon.leagueoflegends.com/cdn/" + RIOTAPI.currentVersion + "/img/profileicon/" + summoner.ProfileIconId + ".png");
+
+
+
+            await ReplyAsync("", false, statEmbed.Build());
+            
         }
 
     }

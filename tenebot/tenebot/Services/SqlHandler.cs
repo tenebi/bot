@@ -32,7 +32,7 @@ namespace tenebot
 
                 while (readerlocal1.Read())
                 {
-                    Debugging.Log("Database Test", reader.GetString("TABLE_NAME"));
+                    Debugging.Log("Database Test", readerlocal1.GetString("TABLE_NAME"));
                 }
                 DatabaseConnection.Close();
 

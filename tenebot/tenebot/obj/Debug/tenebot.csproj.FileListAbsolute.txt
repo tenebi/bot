@@ -73,7 +73,6 @@ C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\Microsoft.Extensions.Dependen
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\Microsoft.Win32.Primitives.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\MySql.Data.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\Newtonsoft.Json.dll
-C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\RiotSharp.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\System.AppContext.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\System.Collections.Immutable.dll
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\System.Console.dll
@@ -104,9 +103,9 @@ C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\Microsoft.Extensions.Dependen
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\MySql.Data.xml
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\Newtonsoft.Json.xml
-C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\RiotSharp.xml
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\System.Collections.Immutable.xml
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\System.Interactive.Async.xml
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.exe
 C:\Users\cPC\Desktop\bot\tenebot\tenebot\obj\Debug\tenebot.pdb
+C:\Users\cPC\Desktop\bot\tenebot\tenebot\bin\Debug\Camille.dll

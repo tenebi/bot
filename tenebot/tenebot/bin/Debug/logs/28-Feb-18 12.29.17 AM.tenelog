@@ -1,0 +1,12 @@
+00:29:17 Settings    Loaded configuration.json successfully
+00:29:17 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:29:17 Discord     Discord.Net v1.0.2 (API v6)
+00:29:18 Gateway     Connecting
+00:29:19 Gateway     Connected
+00:29:19 Gateway     Ready
+00:29:22 Command Han tenebi called !lolstats tty tenebi
+00:30:41 Gateway     System.Exception: Server missed last heartbeat
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Discord.ConnectionManager.<>c__DisplayClass28_0.<<StartAsync>b__0>d.MoveNext()
+00:30:41 Gateway     Disconnecting

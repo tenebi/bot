@@ -1,0 +1,7 @@
+00:36:23 Settings    Loaded configuration.json successfully
+00:36:23 SQL Server  Database disabled in configuration. Some features which use a mysql database won't be available
+00:36:23 Discord     Discord.Net v1.0.2 (API v6)
+00:36:24 Gateway     Connecting
+00:36:25 Gateway     Connected
+00:36:26 Gateway     Ready
+00:36:29 Command Han tenebi called !lolstats euw tenebi
